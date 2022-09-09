@@ -2,7 +2,6 @@
 Fonts
 ****/
 
-
 @font-face {
     font-family: "Barlow";
     src: url(assets/fonts/7fa387951673abf164b13dd1b45c70e3.woff2) format("woff2"),
@@ -27,6 +26,29 @@ Fonts
     U+FEFF, U+FFFD;
 }
 
+
+
+::-webkit-scrollbar{
+    width: 0.8em;
+}
+
+::-webkit-scrollbar-track{
+    background: transparent;
+    border-radius: 100vh;
+    margin-block: 20px;
+}
+
+::-webkit-scrollbar-thumb{
+    background: hsl(60, 8%, 85%);
+    border-radius: 100vh;
+    border: 0.2em solid hsl(0, 0%, 0%);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: hsl(60, 0%, 61%);
+}
+
+
 :root {
     --clr-text: #fff;
     --clr-primary: #25274d;
@@ -36,6 +58,20 @@ Fonts
 
     --ff-title: "Manrope", sans-serif;
     --ff-serif: "Crimson Text", serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+* > *{
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 img {
@@ -156,12 +192,15 @@ p {
 
 .padding1{
     max-width: 1500px;
-    padding: 0 15px;
+    padding-left:30px;
     margin: auto;
 }
-
 /* Navigation */
 
+header {
+    padding: 0em 0 0em;
+    background-color: transparent;
+}
 
 .navbar{
     position: relative;
@@ -191,6 +230,21 @@ p {
     border-left: 1px solid var(--clr-text);
     padding-left: 12px;
     margin-left: 10px;
+}
+
+.toggle-button{
+    font-size: 21px;
+    background-color: transparent;
+    color: var(--clr-text);
+    border: none;
+    position: absolute;
+    right: 0;
+    margin: 8px 10px;
+    display: none;
+}
+
+.toggle-button:focus{
+    outline: none;
 }
 
 nav a {
@@ -303,6 +357,8 @@ nav a:focus {
 .btn.hover-border span:hover::after {
     height: 0%;
 }
+
+/* Homepage Styles */
 
 
 .about-us {
@@ -419,6 +475,8 @@ nav a:focus {
     margin-bottom: 10px;
 }
 
+/* Media Query */
+
 .row{
     display: flex;
 }
@@ -426,7 +484,13 @@ nav a:focus {
 .col-3{
     flex: 0 0 50%;
     max-width: 50%;
-    padding-right: 35px;
+    padding-right: 3px;
+
+}
+.col-4{
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-right: 3px;
 }
 
 @media (max-width: 1024px){
@@ -480,31 +544,35 @@ nav a:focus {
     }
 }
 
+@media (max-width:602px){
+    .toggle-button{
+        display: initial;
+    }
+    .collapse{
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.8s cubic-bezier(0.39, 0.01, 1, 1);
+    }
+    .collapse .nav-link{
+        display: block;
+        text-align: center;
+    }
 
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: transparent;
+    .collapse-toggle{
+        max-height: 500px;
+    }
+    .nav-brand{
+        position: absolute;
+        left: 0;
+        margin: 2px 10px;
+    }
 }
 
-* > *{
-    box-sizing: border-box;
-}
 
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
-a{
-    text-decoration: none;
-}
 
 html
 {
+    overflow-x: hidden; /* Hide scrollbars */
     box-sizing: border-box;
     font-family: "Barlow", serif;
     color: var(--clr-text);
@@ -513,6 +581,7 @@ html
 }
 
 body {
+    overflow-x: hidden; /* Hide scrollbars */
     background-color: #fff;
     background-blend-mode: multiply;
     background-attachment: fixed;
@@ -538,45 +607,6 @@ body {
 header {
     padding: 0em 0 0em;
     background-color: transparent;
-}
-
-@media (max-width:602px){
-    .toggle-button{
-        display: initial;
-    }
-    .collapse{
-        max-height: 0;
-        overflow: hidden;
-        transition: all 0.8s cubic-bezier(0.39, 0.01, 1, 1);
-    }
-    .collapse .nav-link{
-        display: block;
-        text-align: center;
-    }
-
-    .collapse-toggle{
-        max-height: 500px;
-    }
-    .nav-brand{
-        position: absolute;
-        left: 0;
-        margin: 2px 10px;
-    }
-}
-
-.toggle-button:focus{
-    outline: none;
-}
-
-.toggle-button{
-    font-size: 21px;
-    background-color: transparent;
-    color: var(--clr-text);
-    border: none;
-    position: absolute;
-    right: 0;
-    margin: 8px 10px;
-    display: none;
 }
 
 
