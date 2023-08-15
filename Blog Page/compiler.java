@@ -9,6 +9,39 @@ class Main {
 
         String[] targets = { "data/eureka.txt" };
 
+        String header = "header.spec";
+        String repeatStructure = "repeat.spec";
+        String footer = "footer.spec";
+
+        Vector<String> h = read(header);
+        Vector<String> r = read(repeatStructure);
+        Vector<String> f = read(footer);
+
+        Vector<String> ind_buf = new Vector<>(1,1);
+        ind_buf = join(ind_buf, h);
+
+        for(String target : targets) {
+            Vector<String> buf = new Vector<>(1,1);
+            buf = join(buf, r);
+
+            Vector<String> content = read(target);
+
+            String title = content.elementAt(0).trim();
+            String author = content.elementAt(1).trim();
+            String publish_date = content.elementAt(2).trim();
+
+            buf = replace(buf, "{{ title }}", title);
+            buf = replace(buf, "{{ author }}", author);
+            buf = replace(buf, "{{ date }}", publish_date);
+            buf = replace(buf, "{{ img_url }}", "img/"+target+".jpg");
+            buf = replace(buf, "{{ link }}", target+".html");
+
+            ind_buf = join(ind_buf, buf);
+        }
+
+        ind_buf = join(ind_buf, f);
+        write("index_blog.html", ind_buf);
+
         for(String target : targets) {
             Vector<String> t = read(template);
             Vector<String> content = read(target);
