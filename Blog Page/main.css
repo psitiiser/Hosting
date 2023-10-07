@@ -375,10 +375,23 @@ nav a:focus {
 
 
 .article-text {
-
+    background-color: rgba(0,0,0,0.6);
     text-align: justify;
     padding: 100px;
 }\\
+
+#article-img {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+#article-img img{
+    width: 40%;
+    margin: auto;
+    
+}
 
 .events-showcase {
     text-align: center;
