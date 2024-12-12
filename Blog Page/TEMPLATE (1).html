@@ -9,6 +9,11 @@
       <link rel="stylesheet" href="b88d04fba731603756b1.css">
       <script defer="defer" src="bundle.d30138a2dff5a0b6726a.js"></script>
       <link href="main.css" rel="stylesheet">
+
+      <!-- MathJax Library for LaTeX support -->
+      <script type="text/javascript" async
+         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js">
+      </script>
    </head>
    <body>
       <div class="container">
@@ -24,7 +29,6 @@
                         <a href="../Blog Page/index_blog.html" class="nav-link">Blog</a>
                         <a href="../Events Page/index_events.html" class="nav-link">Events</a>
                         <a href="../Resources/index_resources.html" class="nav-link">Resources</a>
-
                      </ul>
                   </div>
                </nav>
@@ -37,7 +41,20 @@
                   <h2 class="article-title">[Article Title]</h2>
                </header>
                <div class="article-text__body">
-                  <p><br><br><i>-[Author Name]</i><br><br>[Introductory paragraph about the topic.]<br><br>[Main content discussing various aspects of the topic. Include relevant details and examples.]<br><br>[Concluding thoughts or summary of the discussion.]<br><br>References:<br><br>[Reference links]</p>
+                  <p>
+                     <br><br><i>-[Author Name]</i><br><br>
+                     [Introductory paragraph about the topic.]<br><br>
+                     Here is an example of a LaTeX equation rendered using MathJax:
+                     <br>
+                     $$E = mc^2$$
+                     <br><br>
+                     [Main content discussing various aspects of the topic. Include relevant details and examples.]
+                     <br><br>
+                     [Concluding thoughts or summary of the discussion.]
+                     <br><br>
+                     References:<br><br>
+                     [Reference links]
+                  </p>
                </div>
                <div class="row">
                   <div class="column" style="padding-right: 5px;">
@@ -169,6 +186,5 @@
          // Call the function to display posts when the page loads
          window.onload = displayFeaturedPosts;
       </script>
-   ```html
    </body>
 </html>
