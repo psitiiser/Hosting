@@ -10,42 +10,42 @@
     <script defer="defer" src="bundle.d30138a2dff5a0b6726a.js"></script>
     <link href="main.css" rel="stylesheet">
     <style>
-/* Add styles for blog boxes to maintain consistent height */
-.blog-box {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc; /* Optional: Add a border for visual separation */
-  margin-bottom: 20px; /* Add spacing between blog boxes */
-}
+      /* Styles for "Our Members" and "Past Members" sections */
+      .blogs-showcase .blog-box {
+        display: flex;
+        flex-direction: column;
+        height: 400px; /* Adjust this height as needed */
+        border: 1px solid #ccc; /* Optional border */
+        margin-bottom: 20px;
+      }
 
-.blog-img {
-  flex: 0 0 auto; /* Prevent image from shrinking */
-  width: 100%;
-  height: 200px; /* Adjust height as needed */
-  overflow: hidden; /* Hide any image overflow */
-}
+      .blogs-showcase .blog-img {
+        width: 100%;
+        height: auto; /* Let image height adjust naturally */
+      }
 
-.blog-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Maintain aspect ratio and cover the container */
-}
+      .blogs-showcase .blog-img img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
 
-.blog-text {
-  flex: 1 1 auto; /* Allow text to take remaining space */
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-}
+      .blogs-showcase .blog-text {
+        flex: 1; /* Allow text area to expand */
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Push content to top and bottom */
+      }
 
-.blog-text span {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+      .blogs-showcase .blog-text span {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
 
-.blog-text p {
-  margin-bottom: 0; /* Remove extra margin at the bottom */
-}
+      .blogs-showcase .blog-text p {
+        margin-bottom: 0;
+      }
     </style>
   </head>
   <body>
