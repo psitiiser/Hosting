@@ -30,6 +30,35 @@
               <p>The Physics Society of IISER - Thiruvananthapuram is a student-run club under the guidance of School of Physics whose sole purpose is to share the passion we hold for Physics. From informative content over on Instagram, regular peer discussions on thought-provoking topics, and organising talks from established researchers to making mini rockets and showcasing the concept of quantum levitation experimentally, PSI(t) is an action-packed club where the love for Physics only amplifies as time passes.</p>
             </div>
           </section><br><br><br><br>
+
+          <!-- Contact Us Section -->
+          <section class="contact-us">
+            <div class="container">
+              <h2 class="section-title">Contact Us</h2>
+              <p>Please fill out the form below, and we'll get back to you as soon as possible. (Note: This form is currently a placeholder and does not send emails yet. It needs to be integrated with a backend system for full functionality.)</p>
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <!-- Add a submit button (it won't work yet) -->
+                <button type="submit">Send</button>
+
+                <!-- Add a hidden input field to store a success message (for later use) -->
+                <input type="hidden" id="successMessage" value="Your message has been sent successfully!">
+              </form>
+            </div>
+          </section>
+          <!-- End Contact Us Section -->
+
         </main>
       </div>
       <footer id="footer">
@@ -83,5 +112,49 @@
         </div>
       </footer>
     </div><canvas class="webgl"></canvas>
+    <script>
+      // Get the form element
+      const form = document.getElementById('contactForm');
+
+      // Add an event listener for form submission
+      form.addEventListener('submit', (event) => {
+        // Prevent the default form submission behavior (which would reload the page)
+        event.preventDefault();
+
+        // Get the form data (you can access the values using form.name.value, form.email.value, etc.)
+        const name = form.name.value;
+        const email = form.email.value;
+        const message = form.message.value;
+
+        // TODO: Send the form data to your backend using AJAX or Fetch API
+        // Example using Fetch API (replace with your backend endpoint):
+        /*
+        fetch('/your-backend-endpoint', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, email, message })
+        })
+        .then(response => {
+          if (response.ok) {
+            // Handle success (e.g., display a success message)
+            const successMessage = document.getElementById('successMessage').value;
+            alert(successMessage);
+          } else {
+            // Handle errors (e.g., display an error message)
+            alert('There was an error sending your message. Please try again later.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('There was an error sending your message. Please try again later.');
+        });
+        */
+
+        // For now, just log the form data to the console (remove this in the real implementation)
+        console.log('Form Data:', { name, email, message });
+      });
+    </script>
   </body>
 </html>
