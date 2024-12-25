@@ -19,8 +19,6 @@
     <script src="./js folder/three.min.js"></script>
     <script src="./js folder/staranimation.js" class="js-prop"></script>
 
-
-
     <main id="site-main">
         <!-- Header   -->
         <header id="header" class ="shadow bg-transparent">
@@ -198,16 +196,6 @@
                             <a target="_blank" class="footer-link text-light" href="http://www.iisertvm.ac.in/">IISER Thiruvananthapuram</a><br>
                           </div>
 
-                                <!-- <address class="mt-2">
-                                    <i class="fas fa-map-marker-alt text-secondary"></i>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing.
-                                </address> -->
-
-                                <!-- <div class="phone">
-                                    <i class="fas fa-mobile text-secondary"></i>
-                                    123-456-7890
-                                </div> -->
-
                          <div class="email">
                            <i class="fas fa-envelope text-secondary"></i>
                               psit@iisertvm.ac.in
@@ -230,7 +218,7 @@
 
     </main>
     <script>
-        // Array of blog posts (NOW INCLUDED)
+        // Array of blog posts 
         const blogPosts = [
             {
                 "title": "From the Holographic Principle to ADS/CFT",
@@ -303,23 +291,23 @@
             return shuffled.slice(0, num); // Return the first 'num' elements
         }
     
-        // Function to create the HTML for a single blog post
+        // Function to create the HTML for a single blog post (Explore Section)
         function createBlogElement(blogData) {
-          const blogBox = document.createElement('div');
-          blogBox.classList.add('blog-box2');
-      
-          blogBox.innerHTML = `
-              <div class="blog-img">
-                  <img src="${blogData.imageUrl}" alt="Blog">
-              </div>
-              <div class="blog-text">
-                  <a href="${blogData.link}" class="blog-title">${blogData.title}</a>
-                  <p>${blogData.excerpt.slice(0, 150)}...</p>
-                  <a href="${blogData.link}" class="btn btn-primary hover-border"><span>Read More</span></a>
-              </div>
-          `;
-          return blogBox;
-      }
+            const blogBox = document.createElement('div');
+            blogBox.classList.add('blog-box2');
+    
+            blogBox.innerHTML = `
+                <div class="blog-img">
+                    <img src="${blogData.imageUrl}" alt="Blog">
+                </div>
+                <div class="blog-text">
+                    <a href="${blogData.link}" class="blog-title">${blogData.title}</a>
+                    <p>${blogData.excerpt.slice(0, 150)}...</p>
+                    <a href="${blogData.link}" class="btn btn-primary hover-border"><span>Read More</span></a>
+                </div>
+            `;
+            return blogBox;
+        }
     
         // Function to update the Explore section with new blog posts
         function updateExploreSection(blogs) {
@@ -332,42 +320,40 @@
             });
         }
     
-        // When the page loads, select and display 3 random blog posts
+        // When the page loads, select and display 3 random blog posts for Explore Section
         window.addEventListener('load', () => {
             const randomBlogs = getRandomBlogs(blogPosts, 3);
             updateExploreSection(randomBlogs);
         });
 
-                 // Function to display featured posts in the footer
-                 function displayFeaturedPosts() {
-             const featuredPostsContainer = document.getElementById('featured-posts-container');
-             const randomPosts = getRandomBlogs(blogPosts, 3);
+        // Function to display featured posts in the footer (NO EXCERPT)
+        function displayFeaturedPosts() {
+            const featuredPostsContainer = document.getElementById('featured-posts-container');
+            const randomPosts = getRandomBlogs(blogPosts, 3);
 
-             randomPosts.forEach(post => {
-                 const postElement = document.createElement('div');
-                 postElement.classList.add('flex-item');
+            randomPosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('flex-item');
 
-                 postElement.innerHTML = `
-                     <article class="article">
-                         <div class="d-flex">
-                             <a href="${post.link}">
-                                 <img src="${post.imageUrl}" class="object-fit" alt="">
-                                 <div class="px-1 mt-1">
-                                     <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
-                                     <p class="secondary-title text-secondary display-3">${post.excerpt.slice(0, 100)}...</p>
-                                 </div>
-                             </a>
-                         </div>
-                     </article>
-                 `;
+                postElement.innerHTML = `
+                    <article class="article">
+                        <div class="d-flex">
+                            <a href="${post.link}">
+                                <img src="${post.imageUrl}" class="object-fit" alt="">
+                                <div class="px-1 mt-1">
+                                    <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
+                                </div>
+                            </a>
+                        </div>
+                    </article>
+                `;
 
-                 featuredPostsContainer.appendChild(postElement);
-             });
-         }
+                featuredPostsContainer.appendChild(postElement);
+            });
+        }
 
-         // Call the function to display featured posts in the footer
-         displayFeaturedPosts();
-
+        // Call the function to display featured posts in the footer
+        displayFeaturedPosts();
     </script>
 </body>
 </html>
