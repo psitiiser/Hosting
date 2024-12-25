@@ -5,27 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PSIT</title>
+
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- styl.css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Preloader HTML -->
     <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
+        <div class="physics-loader">
+          <div class="atom">
+            <div class="nucleus"></div>
+            <div class="electron-path">
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     <main id="site-main">
         <!-- Header   -->
         <header id="header" class ="shadow bg-transparent">
             <nav class="container navbar">
               <a href="./index.html"><img src="./Images/psit_sqr_white.png" width="200" height="200"></a>
+
                 <button class="toggle-button">
                     <span>
                         <i class="fas fa-bars"></i>
                     </span>
                 </button>
+
                 <!-- collapse on toggle button click -->
                 <div class="collapse">
                     <ul class="navbar-nav">
@@ -34,11 +46,15 @@
                         <a href="./Blog Page/index_blog.html" class="nav-link">Blog</a>
                         <a href="./Events Page/index_events.html" class="nav-link">Events</a>
                         <a href="./Resources/index_resources.html" class="nav-link">Resources</a>
+
                     </ul>
                 </div>
             </nav>
         </header>
         <!-- Header End-->
+
+        
+
         <section class="about-us">
             <header class="about-us__intro">
                 <h2 class="section-title">What is <a href="./background/background.html" style="font-family:Cardo;color:white">Ψ(t)</a> ?</h2>
@@ -53,13 +69,18 @@
                 <a href="./Aboutus/contactus.html" class="btn btn-primary hover-border"><span>Contact Us</span></a>
             </div>
         </section>
+
         <!-- Events -->
+        
         <section class="events-showcase">
             <header>
                 <h2 class="section-title"> Recent Events</h2>
             </header>
+
             <div class="blog-container">
+
                 <!-- Event 1 -->
+
                 <div class="blog-box">
                     <div class="blog-text">
                         <span>1st Sep 2022</span>
@@ -80,13 +101,16 @@
                         <div id="overlay"></div>
                     </div>
                 </div>
+
                 <!-- Event 2 -->
+
                 <div class="blog-box">
                     <div class="blog-text">
                         <span>20th August 2022</span>
                         <a href="#" class="blog-title">Peer Discussion</a>
                         <p>It is evident that whenever quantum physicists give an object or phenomena the title of “quantum”,
                           chances are that it serves as a window into a mysterious world of unseen possibilities and challenges alike. And so, in line with that thought, the topic of discussion is related to quantum computing, particularly spin qubits.
+
                         </p>
                         <a href="#" data-modal-target="#modal2" class="btn btn-primary hover-border"><span>Read More</span></a>
                         <div class="modal" id="modal2">
@@ -101,13 +125,17 @@
                              Quantum computers are devices that perform computations based on quantum principles such as superposition,entanglement and interference.
                              The computers that we use everyday perform operations using bits such as 0 and 1. Analogous to this, the quantum computer uses quantum bits or qubits that can be zero and one or a superposition of these two states.
                              A photon,electron or even a nucleus can be used as a qubit.
+
                              All the fuss about quantum computing makes it seem like it is the next big thing in the tech world, and as we are at the dawn of the era of artificial intelligence, the power of quantum computing might serve as the key to unlocking the gates to a new frontier and who knows what we will be able to achieve with it.
+
                             </div>
                         </div>
                         <div id="overlay"></div>
                     </div>
                 </div>
+
                 <!-- Event 3 -->
+
                 <div class="blog-box">
                     <div class="blog-text">
                         <span>13th August 2022</span>
@@ -124,13 +152,16 @@
                               <div class="modal-body">
                                 We are delighted to inform you that the Physics Society of IISER TVM (PSIT) will be starting off this semester’s activities by our monthly screenings with yet another high rated all time sci-fi classic.
                                 Back to the Future is a 1985 American science fiction film directed by Robert Zemeckis, and written by Zemeckis and Bob Gale. It stars Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover, and Thomas F. Wilson. Set in 1985, the story follows Marty McFly (Fox), a teenager accidentally sent back to 1955 in a time-traveling DeLorean automobile built by his eccentric scientist friend Emmett "Doc" Brown (Lloyd). While in the past, Marty inadvertently prevents his future parents from falling in love—threatening his existence—and is forced to reconcile the pair and somehow get back to the future.
+
                                 Hope that you will enjoy the show and cheers for your new semester!
                             </div>
                         </div>
                         <div id="overlay"></div>
                     </div>
                 </div>
+
             </div>
+
         </section>
         <section class="updates-showcase">
             <header>
@@ -144,6 +175,7 @@
     <script>iFrameResize();</script>
 </center>
         </section>
+    
         <section class="blogs-showcase">
             <header>
                 <h2 class="section-title">Explore</h2>
@@ -151,14 +183,18 @@
             <div class="blog-container" id="explore-blog-container">
                 </div>
         </section>
+
         <footer id="footer">
             <div class="container">
               <div class="row mb-3">
+
                     <div class="col-3">
                         <h3 class="footer-title secondary-title">Featured Posts</h3>
+
                         <div class="feature-post py-1" id="featured-posts-container">
                         </div>
                     </div>
+
                     <div class="col-3">
                       <h3 class="footer-title secondary-title">Other Links</h3>
                         <div class ="secondary-title text-light mb-1">
@@ -166,14 +202,17 @@
                             <a target="_blank" class="footer-link text-light" href="https://physics.iisertvm.ac.in/">School of Physics</a><br>
                             <a target="_blank" class="footer-link text-light" href="http://www.iisertvm.ac.in/">IISER Thiruvananthapuram</a><br>
                           </div>
+
                                 <!-- <address class="mt-2">
                                     <i class="fas fa-map-marker-alt text-secondary"></i>
                                     Lorem ipsum dolor sit amet consectetur adipisicing.
                                 </address> -->
+
                                 <!-- <div class="phone">
                                     <i class="fas fa-mobile text-secondary"></i>
                                     123-456-7890
                                 </div> -->
+
                          <div class="email">
                            <i class="fas fa-envelope text-secondary"></i>
                               psit@iisertvm.ac.in
@@ -189,9 +228,11 @@
                             </div>
                           </div>
                     </div>
+
                 </div>
             </div>
         </footer>
+
     </main>
     <!-- Scripts -->
     <script src="./js folder/three.min.js"></script>
@@ -262,15 +303,18 @@
                 "excerpt": "" // Add excerpt if you have one for this post
             }
         ];
+    
         // Function to get 'num' random elements from an array without repetition
         function getRandomBlogs(allBlogs, num) {
             const shuffled = [...allBlogs].sort(() => 0.5 - Math.random()); // Shuffle the array
             return shuffled.slice(0, num); // Return the first 'num' elements
         }
+    
         // Function to create the HTML for a single blog post
         function createBlogElement(blogData) {
             const blogBox = document.createElement('div');
             blogBox.classList.add('blog-box2');
+    
             blogBox.innerHTML = `
                 <div class="blog-img">
                     <img src="${blogData.imageUrl}" alt="Blog">
@@ -282,29 +326,36 @@
                     <a href="${blogData.link}" class="btn btn-primary hover-border"><span>Read More</span></a>
                 </div>
             `;
+    
             return blogBox;
         }
+    
         // Function to update the Explore section with new blog posts
         function updateExploreSection(blogs) {
             const container = document.getElementById('explore-blog-container');
             container.innerHTML = ''; // Clear existing content
+    
             blogs.forEach(blog => {
                 const blogElement = createBlogElement(blog);
                 container.appendChild(blogElement);
             });
         }
+    
         // When the page loads, select and display 3 random blog posts
         window.addEventListener('load', () => {
             const randomBlogs = getRandomBlogs(blogPosts, 3);
             updateExploreSection(randomBlogs);
         });
+
                  // Function to display featured posts in the footer
                  function displayFeaturedPosts() {
              const featuredPostsContainer = document.getElementById('featured-posts-container');
              const randomPosts = getRandomBlogs(blogPosts, 3);
+
              randomPosts.forEach(post => {
                  const postElement = document.createElement('div');
                  postElement.classList.add('flex-item');
+
                  postElement.innerHTML = `
                      <article class="article">
                          <div class="d-flex">
@@ -318,9 +369,11 @@
                          </div>
                      </article>
                  `;
+
                  featuredPostsContainer.appendChild(postElement);
              });
          }
+
          // Call the function to display featured posts in the footer
          displayFeaturedPosts();
 
@@ -340,6 +393,102 @@
             // Hide the loader after the minimum loading time has elapsed
             setTimeout(hideLoader, minimumLoadingTime);
         });
+
     </script>
 </body>
 </html>
+<styles>
+    /* PLEASE NOTE I HAVE ONLY INCLUDED THE CSS FOR THE LOADER ANIMATION AND OTHER CSS STYLES ARE OMITTED AS IT WAS WORKING FINE */
+/* Loading Screen Styles */
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+    background-color: #222; /* Or your preferred background color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Hide the main content initially, more specific rule */
+  body > #site-main {
+      display: none;
+  }
+  
+  /* Physics Animation */
+  .physics-loader {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .atom {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .nucleus {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: #FF00FF;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .electron-path {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px dashed #9370DB;
+    transform: translate(-50%, -50%) rotate(45deg);
+    animation: orbit 5s linear infinite;
+  }
+  
+  .electron-path > div {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    background-color: #BA55D3;
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+  
+  @keyframes orbit {
+    0% {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(405deg);
+    }
+  }
+</styles>
+<script>
+    // main.js (or your main script file)
+
+// ... (other JavaScript code you might have) ...
+
+// Preloader Logic
+window.addEventListener('load', () => {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    const siteMain = document.getElementById('site-main');
+    const minimumLoadingTime = 2000; // 2 seconds
+
+    function hideLoader() {
+        loaderWrapper.style.display = 'none';
+        siteMain.style.display = 'block';
+    }
+
+    setTimeout(hideLoader, minimumLoadingTime);
+});
+</script>
