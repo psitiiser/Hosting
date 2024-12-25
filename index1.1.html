@@ -957,7 +957,6 @@
                 "title": "The Phenomenon of Quantum Tunneling and How It's Used in Scanning Tunneling Microscopy",
                 "imageUrl": "./Blog Page/qtnling1.jpg",
                 "link": "./Blog Page/qmtnling_stm.html",
-                ,
                 "excerpt": ""
             },
             {
@@ -1076,19 +1075,39 @@
         // Call the function to display featured posts in the footer
         displayFeaturedPosts();
 
-        // Preloader Logic
-        window.addEventListener('load', () => {
-            const loaderWrapper = document.getElementById('loader-wrapper');
-            const siteMain = document.getElementById('site-main');
-            const minimumLoadingTime = 2000; // 2 seconds
+      // Preloader Logic
+window.addEventListener('load', () => {
+    const loaderWrapper = document.getElementById('loader-wrapper');
+    const siteMain = document.getElementById('site-main');
+    const maximumLoadingTime = 4000; // 4 seconds maximum
 
-            function hideLoader() {
-                loaderWrapper.style.display = 'none';
-                siteMain.style.display = 'block';
-            }
+    function hideLoader() {
+        loaderWrapper.style.display = 'none';
+        siteMain.style.display = 'block';
+    }
 
-            setTimeout(hideLoader, minimumLoadingTime);
-        });
+    // Ensure the loader is hidden after the maximum loading time
+    setTimeout(hideLoader, maximumLoadingTime);
+
+    // Optional: Hide the loader sooner if the page finishes loading before the timeout
+    // This can be useful for faster connections where the page might load well within 4 seconds
+    function checkPageLoadComplete() {
+        if (document.readyState === 'complete') {
+            hideLoader();
+        }
+    }
+
+    // Check for the 'complete' state of the page periodically
+    const pageLoadInterval = setInterval(() => {
+        if (document.readyState === 'complete') {
+            hideLoader();
+            clearInterval(pageLoadInterval); // Stop checking once the page is loaded
+        }
+    }, 500); // Check every 500 milliseconds
+
+    // As an additional safety measure, also hide the loader if the 'load' event fires before the timeout
+    window.addEventListener('load', hideLoader);
+});
     </script>
     <script src="./js folder/modal.js"></script>
     <script src="./js folder/three.min.js"></script>
