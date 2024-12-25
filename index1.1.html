@@ -11,95 +11,18 @@
 
     <!-- styl.css -->
     <link rel="stylesheet" href="style.css">
-
-    <style>
-        /* Compact Contact Form Styles */
-        .compact-contact-us {
-          padding: 2rem 0;
-          background-color: transparent;
-          color: #fff;
-        }
-  
-        .compact-contact-us .container {
-          max-width: 500px; /* Smaller container */
-          margin: 0 auto;
-          padding: 0 1.5rem;
-        }
-  
-        .compact-contact-us .section-title {
-          text-align: center;
-          margin-bottom: 1rem; /* Less margin */
-          color: #fff;
-          font-size: 1.8rem;
-        }
-  
-        .compact-contact-us form {
-          background-color: #0D1117;
-          padding: 1.5rem; /* Less padding */
-          border-radius: 5px;
-        }
-  
-        .compact-contact-us .form-group {
-          margin-bottom: 1rem; /* Less margin */
-        }
-  
-        .compact-contact-us label {
-          display: block;
-          margin-bottom: 0.3rem; /* Less margin */
-          font-weight: bold;
-          font-size: 0.9rem; /* Smaller font size */
-        }
-  
-        .compact-contact-us input[type="text"],
-        .compact-contact-us input[type="email"],
-        .compact-contact-us textarea {
-          width: 100%;
-          padding: 0.5rem; /* Less padding */
-          border: 1px solid #C3965F;
-          border-radius: 3px;
-          background-color: #010409;
-          color: #fff;
-          font-size: 0.9rem; /* Smaller font size */
-        }
-  
-        .compact-contact-us textarea {
-          min-height: 80px; /* Smaller textarea */
-        }
-  
-        .compact-contact-us button[type="submit"] {
-          background-color: #fff;
-          color: #000;
-          border: none;
-          padding: 0.5rem 1rem; /* Less padding */
-          border-radius: 3px;
-          font-weight: bold;
-          cursor: pointer;
-          transition: background-color 0.3s ease;
-          font-size: 0.9rem; /* Smaller font size */
-        }
-  
-        .compact-contact-us button[type="submit"]:hover {
-          background-color: #9A6727;
-        }
-  
-        .compact-contact-us ::placeholder {
-          color: #999;
-        }
-  
-        /* Hide the full form initially */
-        .compact-contact-us #form-container {
-          display: block;
-        }
-  
-        /* Style for the thank you message */
-        .compact-contact-us #thank-you-message {
-          display: none;
-          text-align: center;
-          margin-top: 1rem;
-        }
-      </style>
 </head>
 <body>
+
+
+    <!-- custom javascript main.js file -->
+
+
+    <script src="./js folder/three.min.js"></script>
+    <script src="./js folder/staranimation.js" class="js-prop"></script>
+
+
+
     <main id="site-main">
         <!-- Header   -->
         <header id="header" class ="shadow bg-transparent">
@@ -112,6 +35,7 @@
                     </span>
                 </button>
 
+
                 <!-- collapse on toggle button click -->
                 <div class="collapse">
                     <ul class="navbar-nav">
@@ -119,7 +43,7 @@
                         <a href="./Team Page/index_team.html" class="nav-link">Meet The Team</a>
                         <a href="./Blog Page/index_blog.html" class="nav-link">Blog</a>
                         <a href="./Events Page/index_events.html" class="nav-link">Events</a>
-                        <a href="./Resources/resource.html" class="nav-link">Resources</a>
+                        <a href="./Resources/index_resources.html" class="nav-link">Resources</a>
 
                     </ul>
                 </div>
@@ -127,72 +51,178 @@
         </header>
         <!-- Header End-->
 
-        <section class="compact-contact-us">
-            <div class="container">
-              <h2 class="section-title">Quick Contact</h2>
-              <form action="https://formsubmit.co/psitiiser@gmail.com" method="POST">
-                <input type="hidden" name="_captcha" value="false">
-                <div id="form-container">
-                  <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-                  </div>
-                  <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea id="message" name="message" rows="3" required></textarea>
-                  </div>
-                  <button type="submit">Send</button>
-                </div>
-                <div id="thank-you-message">
-                  <p>Thank you!</p>
-                </div>
-              </form>
-            </div>
-          </section>
+        <script src="./js folder/main.js"></script>
 
-          <script>
-            const form = document.querySelector('.compact-contact-us form');
-            const formContainer = document.getElementById('form-container');
-            const thankYouMessage = document.getElementById('thank-you-message');
-      
-            form.addEventListener('submit', (event) => {
-                event.preventDefault();
-      
-                const formData = new FormData(form);
-      
-                fetch(form.action, {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => {
-                    if (response.ok) {
-                        formContainer.style.display = 'none';
-                        thankYouMessage.style.display = 'block';
-                    } else {
-                        alert('There was an error. Please try again.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('There was an error. Please try again.');
-                });
-            });
-          </script>
         <section class="about-us">
             <header class="about-us__intro">
                 <h2 class="section-title">What is <a href="./background/background.html" style="font-family:Cardo;color:white">Ψ(t)</a> ?</h2>
             </header>
             <div class="about-us__body">
-                <p>The Physics Society of IISER Thiruvananthपुरम - PSI(T) has been an open organization under the guidance of the School of Physics with the primary objective of promoting Physics among students across all levels. <br>
+                <p>The Physics Society of IISER Thiruvananthapuram - PSI(T) has been an open organization under the guidance of the School of Physics with the primary objective of promoting Physics among students across all levels. <br>
                   It aims to serve as a friendly platform that promotes conceptually intriguing and thought-provoking discussions to facilitate learning and coursework.
                 </p>
             </div>
             <div class="btn-group">
                 <a href="./Aboutus/aboutus.html" class="btn btn-primary hover-border"><span>About Us</span></a>
+            </div>
+        </section>
+
+        <!-- Events -->
+        <script defer src="./js folder/modal.js"></script>
+        <section class="events-showcase">
+            <header>
+                <h2 class="section-title"> Recent Events</h2>
+            </header>
+
+
+            <div class="blog-container">
+
+                <!-- Event 1 -->
+
+                <div class="blog-box">
+                    <div class="blog-text">
+                        <span>1st Sep 2022</span>
+                        <a href="#" class="blog-title">Elective Talk Series</a>
+                        <p>PSI(T) launched its brand new talk series on electives, on the 1st of September, with the topic in discussion being Quantum Field Theory presented by Sharang R. Iyer, a fifth year BS-MS Student.
+                        </p>
+                        <a href="#" data-modal-target="#modal1" class="btn btn-primary hover-border"><span>Read More</span></a>
+                        <div class="modal" id="modal1">
+                            <div class="modal-header">
+                                <div class="title">Elective Talk Series</div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              PSI(T) launched its brand new talk series on electives, on the 1st of September, with the topic in discussion being Quantum Field Theory presented by Sharang R. Iyer, a fifth year BS-MS Student.
+                              Dr. Anil Shaji from School of Physics teaches this course.The essence of this theory is that it combines classical relativity and quantum mechanics. These are steps leading to the unified theory  and the standard model.
+                              The problem of time in Schrodinger’s equation, negative energy solutions for relativistic wave equations, etc are studied. Other topics that are covered include quantum ideas involving states of various particles, classical field theory( which involves the math of vectors, tensors and spinors), Klein-Gordon Field and Dirac Field, quantizing and Feynman diagrams. Overall it was a fruitful discussion, which gave an insight into one of the electives provided here in IISER Thiruvananthapuram to students looking to major in physics                            </div>
+                        </div>
+                        <div id="overlay"></div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+
+                <div class="blog-box">
+                    <div class="blog-text">
+                        <span>20th August 2022</span>
+                        <a href="#" class="blog-title">Peer Discussion</a>
+                        <p>It is evident that whenever quantum physicists give an object or phenomena the title of “quantum”,
+                          chances are that it serves as a window into a mysterious world of unseen possibilities and challenges alike. And so, in line with that thought, the topic of discussion is related to quantum computing, particularly spin qubits.
+
+                        </p>
+                        <a href="#" data-modal-target="#modal2" class="btn btn-primary hover-border"><span>Read More</span></a>
+                        <div class="modal" id="modal2">
+                            <div class="modal-header">
+                                <div class="title">Peer Discussion</div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              It is evident that whenever quantum physicists give an object or phenomena the title of “quantum”,
+                             chances are that it serves as a window into a mysterious world of unseen possibilities and challenges alike.
+                             And so, in line with that thought, the topic of discussion is related to quantum computing, particularly spin qubits.
+                             Quantum computers are devices that perform computations based on quantum principles such as superposition,entanglement and interference.
+                             The computers that we use everyday perform operations using bits such as 0 and 1. Analogous to this, the quantum computer uses quantum bits or qubits that can be zero and one or a superposition of these two states.
+                             A photon,electron or even a nucleus can be used as a qubit.
+
+                             All the fuss about quantum computing makes it seem like it is the next big thing in the tech world, and as we are at the dawn of the era of artificial intelligence, the power of quantum computing might serve as the key to unlocking the gates to a new frontier and who knows what we will be able to achieve with it.
+
+
+                            </div>
+                        </div>
+                        <div id="overlay"></div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+
+                <div class="blog-box">
+                    <div class="blog-text">
+                        <span>13th August 2022</span>
+                        <a href="#" class="blog-title">Movie Screening</a>
+                        <p>We are delighted to inform you that the Physics Society of IISER TVM (PSIT) will be starting off this semester’s activities by our monthly screenings with yet another high rated all time sci-fi classic.
+                        </p>
+                        <a href="#" data-modal-target="#modal3" class="btn btn-primary hover-border"><span>Read More</span></a>
+                        <div class="modal" id="modal3">
+                            <div class="modal-header">
+                                <div class="title">Movie Screening</div>
+                                <button data-close-button class="close-button">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="modal-body">
+                                We are delighted to inform you that the Physics Society of IISER TVM (PSIT) will be starting off this semester’s activities by our monthly screenings with yet another high rated all time sci-fi classic.
+                                Back to the Future is a 1985 American science fiction film directed by Robert Zemeckis, and written by Zemeckis and Bob Gale. It stars Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover, and Thomas F. Wilson. Set in 1985, the story follows Marty McFly (Fox), a teenager accidentally sent back to 1955 in a time-traveling DeLorean automobile built by his eccentric scientist friend Emmett "Doc" Brown (Lloyd). While in the past, Marty inadvertently prevents his future parents from falling in love—threatening his existence—and is forced to reconcile the pair and somehow get back to the future.
+
+                                Hope that you will enjoy the show and cheers for your new semester!
+                            </div>
+                        </div>
+                        <div id="overlay"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <section class="updates-showcase">
+            <header>
+                <h2 class="section-title">Updates</h2>
+            </header>
+        <center>
+    <script src="https://embedsocial.com/js/iframe.js"></script>
+    <iframe style="border: 0; width: 65%; height: 300px;" scrolling="no" 
+        src="https://embedsocial.com/api/pro_hashtag/3f187510ffe47e19080dc279c7cae4867d368279">
+    </iframe>
+    <script>iFrameResize();</script>
+</center>
+        </section>
+    
+        <section class="blogs-showcase">
+            <header>
+                <h2 class="section-title">Explore</h2>
+            </header>
+            <div class="blog-container">
+
+                <div class="blog-box2">
+                    <div class="blog-img">
+                        <img src="./Images/bsm.jpg" alt="Blog">
+                    </div>
+                    <div class="blog-text">
+                        <span>15 March 2022</span>
+                        <a href="./Blog Page/bsm.html" class="blog-title">Beyond the Standard Model</a>
+                        <p>We are not to tell nature what she’s gotta be... She’s always got better imagination than we have.” -Richard Feynman
+                        </p>
+                        <a href="./Blog Page/bsm.html" class="btn btn-primary hover-border"><span>Read More</span></a>
+                    </div>
+
+                </div>
+                <div class="blog-box2">
+                    <div class="blog-img">
+                        <img src="./Images/ultracold systems.jpeg" alt="Blog">
+                    </div>
+                    <div class="blog-text">
+                        <span>10 Aug 2022</span>
+                        <a href="#" class="blog-title">Ultracold Atomic Systems</a>
+                        <p>What do superconductors, neutron stars and quantum computers have in common? Before we get to that, let me introduce you to one of the most peculiar phenomena in physics: ultracold atomic systems.
+                        </p>
+                        <a href="./Blog Page/ultracold systems.html" class="btn btn-primary hover-border"><span>Read More</span></a>
+                    </div>
+
+                </div>
+                <div class="blog-box2">
+                    <div class="blog-img">
+                        <img src="./Images/time.jpg" alt="Blog">
+                    </div>
+                    <div class="blog-text">
+                        <span>22 June 2022</span>
+                        <a href="#" class="blog-title">The Arrow of Time</a>
+                        <p>The given time symmetrical Feynman diagrams drawn with respect to space-time coordinates.
+                        Why does it move forward when many laws in physics are time-symmetric in the sense, it doesn’t
+                        depend on whether it is t or –t?
+                        </p>
+                        <a href="./Blog Page/time.html" class="btn btn-primary hover-border"><span>Read More</span></a>
+                    </div>
+
+                </div>
+
             </div>
         </section>
 
@@ -296,25 +326,7 @@
                 </div>
             </div>
         </footer>
-    <form action="https://api.web3forms.com/submit" method="POST">
 
-    <!-- Replace with your Access Key -->
-    <input type="hidden" name="access_key" value="b746bea9-2ea1-4bd1-9dc7-4e712542040a">
-
-    <!-- Form Inputs. Each input must have a name="" attribute -->
-    <input type="text" name="name" required>
-    <input type="email" name="email" required>
-    <textarea name="message" required></textarea>
-
-    <!-- Honeypot Spam Protection -->
-    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-    <!-- Custom Confirmation / Success Page -->
-    <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
-
-    <button type="submit">Submit Form</button>
-
-</form>
 
     </main>
 </body>
