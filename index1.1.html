@@ -236,61 +236,64 @@
                 "title": "From the Holographic Principle to ADS/CFT",
                 "imageUrl": "./Blog Page/holocft1.png",
                 "link": "./Blog Page/holograph_cft.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `In 1997, a remarkable conjecture was made by Juan Maldacena,
+                 which states that a theory of quantum gravity in a (d+1)
+                 dimensional Anti-de Sitter (AdS) space-time is equivalent to
+                 a Conformal Field Theory (CFT) without gravity, in d dimensions. `
             },
             {
                 "title": "The Phenomenon of Quantum Tunneling and How It's Used in Scanning Tunneling Microscopy",
                 "imageUrl": "./Blog Page/qtnling1.jpg",
                 "link": "./Blog Page/qmtnling_stm.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `Quantum tunneling is a phenomenon in which a particle can pass through a potential barrier that is higher in energy than the particle's kinetic energy.`
             },
             {
                 "title": "Frontier: Mpemba Effect",
                 "imageUrl": "./Blog Page/b0b2c5f14ca5de02d038.jpeg",
                 "link": "./Blog Page/mpemba.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `“Hot water freezes faster than cold water” is not an unusual statement. Almost everyone knows this. But what if I said that the statement is controversial?`
             },
             {
                 "title": "Spotlight: W-Boson, The Mass Anomaly",
                 "imageUrl": "./Blog Page/4db3aaa641795bafafea.jpeg",
                 "link": "./Blog Page/wboson.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `At the turn of the century, the physics community was taken aback by one of the most striking discoveries that shook the very foundations of the Standard Model. It was when the CDF collaboration at Fermilab announced their precision measurement for the mass of W-boson that the particle physics community found themselves on a forked road.`
             },
             {
                 "title": "Conceptualise: Handstand",
                 "imageUrl": "./Blog Page/3d360fdc09d9feef7bec.jpeg",
                 "link": "./Blog Page/handstand.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `How exactly do we do a handstand? Most would assume that the key to a stable handstand is to make sure that our hands are directly below the center of mass (COM) of the body.`
             },
             {
                 "title": "Review: The Elegant Universe",
                 "imageUrl": "./Blog Page/67c79ceb0deb5d44bb32.jpeg",
                 "link": "./Blog Page/elegant.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `“The Elegant Universe: Superstrings, Hidden Dimensions, and the Quest for the Ultimate Theory” is a book about the nature of the universe, matter, and the attempts of scientists to come up with a single theory that explains it all.`
             },
             {
                 "title": "Curtain Call: Deepak Dhar",
                 "imageUrl": "./Blog Page/d039354923097ba72254.jpeg",
                 "link": "./Blog Page/deepak.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `Deepak Dhar, a name that stands out in the field of statistical physics in India and around the world, is a theoretical physicist, a professor at the Indian Institute of Science Education and Research (IISER), Pune, and an alumnus of IIT Kharagpur.`
             },
             {
                 "title": "What is? : Quantum Levitation",
                 "imageUrl": "./Blog Page/269ae617c0c30b4ee0a0.jpeg",
                 "link": "./Blog Page/levitation.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `When talking about superconductors, the first thing that might come to mind is the Meissner effect, the expulsion of magnetic fields from a superconductor during its transition to the superconducting state.`
             },
             {
                 "title": "Musings: the Future of Space Travel",
                 "imageUrl": "./Blog Page/a38cfb9ff07cfe120d15.jpeg",
                 "link": "./Blog Page/spacetravel.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `Since the first human spaceflight by Yuri Gagarin in 1961, humanity has come a long way in space travel and exploration. We have sent humans to the moon, probes beyond the solar system and rovers on Mars, built a space station and plan to inhabit Mars in the near future. But the question remains: what are our limits in space travel?`
             },
             {
                 "title": "Eureka: Super Kamiokande",
                 "imageUrl": "./Blog Page/8d00848ec0f8cdd38689.jpeg",
                 "link": "./Blog Page/eureka.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": `The Super-Kamioka Neutrino Detection Experiment (or Super-Kamiokande) is a neutrino observatory in Japan that has been making history since 1996. This detector observes high-energy neutrinos from supernovae, the sun, the atmosphere and even accelerators.`
             }
         ];
     
@@ -302,23 +305,21 @@
     
         // Function to create the HTML for a single blog post
         function createBlogElement(blogData) {
-            const blogBox = document.createElement('div');
-            blogBox.classList.add('blog-box2');
-    
-            blogBox.innerHTML = `
-                <div class="blog-img">
-                    <img src="${blogData.imageUrl}" alt="Blog">
-                </div>
-                <div class="blog-text">
-                    
-                    <a href="${blogData.link}" class="blog-title">${blogData.title}</a>
-                    <p>${blogData.excerpt}</p>
-                    <a href="${blogData.link}" class="btn btn-primary hover-border"><span>Read More</span></a>
-                </div>
-            `;
-    
-            return blogBox;
-        }
+          const blogBox = document.createElement('div');
+          blogBox.classList.add('blog-box2');
+      
+          blogBox.innerHTML = `
+              <div class="blog-img">
+                  <img src="${blogData.imageUrl}" alt="Blog">
+              </div>
+              <div class="blog-text">
+                  <a href="${blogData.link}" class="blog-title">${blogData.title}</a>
+                  <p>${blogData.excerpt.slice(0, 150)}...</p>
+                  <a href="${blogData.link}" class="btn btn-primary hover-border"><span>Read More</span></a>
+              </div>
+          `;
+          return blogBox;
+      }
     
         // Function to update the Explore section with new blog posts
         function updateExploreSection(blogs) {
@@ -353,7 +354,7 @@
                                  <img src="${post.imageUrl}" class="object-fit" alt="">
                                  <div class="px-1 mt-1">
                                      <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
-                                     <p class="secondary-title text-secondary display-3"></p>
+                                     <p class="secondary-title text-secondary display-3">${post.excerpt.slice(0, 100)}...</p>
                                  </div>
                              </a>
                          </div>
