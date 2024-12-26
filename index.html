@@ -6,20 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PSIT</title>
 
-    <!-- font awesome icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- font awesome icons (Defer loading) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" defer />
 
     <!-- styl.css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- custom javascript main.js file -->
-
-    <script src="./js folder/three.min.js"></script>
-    <script src="./js folder/staranimation.js" class="js-prop"></script>
-
-
 
     <main id="site-main">
         <!-- Header   -->
@@ -47,7 +40,6 @@
             </nav>
         </header>
         <!-- Header End-->
-
         <script src="./js folder/main.js"></script>
 
         <section class="about-us">
@@ -66,7 +58,7 @@
         </section>
 
         <!-- Events -->
-        <script defer src="./js folder/modal.js"></script>
+        
         <section class="events-showcase">
             <header>
                 <h2 class="section-title"> Recent Events</h2>
@@ -163,12 +155,12 @@
                 <h2 class="section-title">Updates</h2>
             </header>
         <center>
-    <script src="https://embedsocial.com/js/iframe.js"></script>
-    <iframe style="border: 0; width: 65%; height: 300px;" scrolling="no" 
-        src="https://embedsocial.com/api/pro_hashtag/3f187510ffe47e19080dc279c7cae4867d368279">
-    </iframe>
-    <script>iFrameResize();</script>
-</center>
+            <!-- Lazy-loaded iframe -->
+            <iframe style="border: 0; width: 65%; height: 300px;" scrolling="no" 
+            src="about:blank" data-src="https://embedsocial.com/api/pro_hashtag/3f187510ffe47e19080dc279c7cae4867d368279" loading="lazy" class="lazy-iframe">
+            </iframe>
+             <script>iFrameResize();</script>
+        </center>
         </section>
     
         <section class="blogs-showcase">
@@ -228,69 +220,73 @@
             </div>
         </footer>
 
-    </main>
+    <!-- Scripts -->
+    <script defer src="./js folder/modal.js"></script>
+    <script src="./js folder/three.min.js" defer></script>
+    <script src="./js folder/staranimation.js" class="js-prop" defer></script>
+
     <script>
-        // Array of blog posts (NOW INCLUDED)
+        // Array of blog posts
         const blogPosts = [
             {
                 "title": "From the Holographic Principle to ADS/CFT",
                 "imageUrl": "./Blog Page/holocft1.png",
                 "link": "./Blog Page/holograph_cft.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "The Phenomenon of Quantum Tunneling and How It's Used in Scanning Tunneling Microscopy",
                 "imageUrl": "./Blog Page/qtnling1.jpg",
                 "link": "./Blog Page/qmtnling_stm.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "Frontier: Mpemba Effect",
                 "imageUrl": "./Blog Page/b0b2c5f14ca5de02d038.jpeg",
                 "link": "./Blog Page/mpemba.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "Spotlight: W-Boson, The Mass Anomaly",
                 "imageUrl": "./Blog Page/4db3aaa641795bafafea.jpeg",
                 "link": "./Blog Page/wboson.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "Conceptualise: Handstand",
                 "imageUrl": "./Blog Page/3d360fdc09d9feef7bec.jpeg",
                 "link": "./Blog Page/handstand.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "Review: The Elegant Universe",
                 "imageUrl": "./Blog Page/67c79ceb0deb5d44bb32.jpeg",
                 "link": "./Blog Page/elegant.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "Curtain Call: Deepak Dhar",
                 "imageUrl": "./Blog Page/d039354923097ba72254.jpeg",
                 "link": "./Blog Page/deepak.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "What is? : Quantum Levitation",
                 "imageUrl": "./Blog Page/269ae617c0c30b4ee0a0.jpeg",
                 "link": "./Blog Page/levitation.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "Musings: the Future of Space Travel",
                 "imageUrl": "./Blog Page/a38cfb9ff07cfe120d15.jpeg",
                 "link": "./Blog Page/spacetravel.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             },
             {
                 "title": "Eureka: Super Kamiokande",
                 "imageUrl": "./Blog Page/8d00848ec0f8cdd38689.jpeg",
                 "link": "./Blog Page/eureka.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": "" 
             }
         ];
     
@@ -331,41 +327,64 @@
             });
         }
     
-        // When the page loads, select and display 3 random blog posts
-        window.addEventListener('load', () => {
+        
+        //Lazy loading for iframes
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyIframes = document.querySelectorAll('.lazy-iframe');
+
+            if ('loading' in HTMLIFrameElement.prototype) {
+                // Native lazy loading is supported, do nothing (it's handled by loading="lazy")
+            } else {
+                // Use Intersection Observer for browsers that don't support native lazy loading
+
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const iframe = entry.target;
+                            iframe.src = iframe.dataset.src; // Set the actual src from data-src
+                            observer.unobserve(iframe); // Stop observing once loaded
+                        }
+                    });
+                });
+
+                lazyIframes.forEach(iframe => {
+                    observer.observe(iframe);
+                });
+            }
+            // When the page loads, select and display 3 random blog posts
             const randomBlogs = getRandomBlogs(blogPosts, 3);
             updateExploreSection(randomBlogs);
+
+            // Function to display featured posts in the footer
+            function displayFeaturedPosts() {
+                const featuredPostsContainer = document.getElementById('featured-posts-container');
+                const randomPosts = getRandomBlogs(blogPosts, 3);
+
+                randomPosts.forEach(post => {
+                    const postElement = document.createElement('div');
+                    postElement.classList.add('flex-item');
+
+                    postElement.innerHTML = `
+                        <article class="article">
+                            <div class="d-flex">
+                                <a href="${post.link}">
+                                    <img src="${post.imageUrl}" class="object-fit" alt="">
+                                    <div class="px-1 mt-1">
+                                        <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
+                                        <p class="secondary-title text-secondary display-3"></p>
+                                    </div>
+                                </a>
+                            </div>
+                        </article>
+                    `;
+
+                    featuredPostsContainer.appendChild(postElement);
+                });
+            }
+
+            // Call the function to display featured posts in the footer
+            displayFeaturedPosts();
         });
-
-                 // Function to display featured posts in the footer
-                 function displayFeaturedPosts() {
-             const featuredPostsContainer = document.getElementById('featured-posts-container');
-             const randomPosts = getRandomBlogs(blogPosts, 3);
-
-             randomPosts.forEach(post => {
-                 const postElement = document.createElement('div');
-                 postElement.classList.add('flex-item');
-
-                 postElement.innerHTML = `
-                     <article class="article">
-                         <div class="d-flex">
-                             <a href="${post.link}">
-                                 <img src="${post.imageUrl}" class="object-fit" alt="">
-                                 <div class="px-1 mt-1">
-                                     <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
-                                     <p class="secondary-title text-secondary display-3"></p>
-                                 </div>
-                             </a>
-                         </div>
-                     </article>
-                 `;
-
-                 featuredPostsContainer.appendChild(postElement);
-             });
-         }
-
-         // Call the function to display featured posts in the footer
-         displayFeaturedPosts();
 
     </script>
 </body>
