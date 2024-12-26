@@ -157,9 +157,8 @@
         <center>
             <!-- Lazy-loaded iframe -->
             <iframe style="border: 0; width: 65%; height: 300px;" scrolling="no" 
-            src="about:blank" data-src="https://embedsocial.com/api/pro_hashtag/3f187510ffe47e19080dc279c7cae4867d368279" loading="lazy" class="lazy-iframe">
+            src="about:blank" data-src="https://embedsocial.com/api/pro_hashtag/3f187510ffe47e19080dc279c7cae4867d368279" loading="lazy" class="lazy-iframe" onload="handleIframeLoad(this)">
             </iframe>
-             <script>iFrameResize();</script>
         </center>
         </section>
     
@@ -332,25 +331,37 @@
         document.addEventListener("DOMContentLoaded", function() {
             const lazyIframes = document.querySelectorAll('.lazy-iframe');
 
-            if ('loading' in HTMLIFrameElement.prototype) {
-                // Native lazy loading is supported, do nothing (it's handled by loading="lazy")
-            } else {
-                // Use Intersection Observer for browsers that don't support native lazy loading
+            // Load the EmbedSocial script dynamically
+            const embedSocialScript = document.createElement('script');
+            embedSocialScript.src = 'https://embedsocial.com/js/iframe.js';
+            embedSocialScript.async = true; // Load asynchronously
+            document.body.appendChild(embedSocialScript); // Add it to the body
 
+            // Intersection Observer for lazy loading
+            if (!('loading' in HTMLIFrameElement.prototype)) { // Check for native lazy loading
                 const observer = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             const iframe = entry.target;
-                            iframe.src = iframe.dataset.src; // Set the actual src from data-src
-                            observer.unobserve(iframe); // Stop observing once loaded
+                            iframe.src = iframe.dataset.src;
+                            observer.unobserve(iframe);
                         }
                     });
+                }, {
+                rootMargin: '100px 0px' // Adjust rootMargin as needed
                 });
 
                 lazyIframes.forEach(iframe => {
                     observer.observe(iframe);
                 });
             }
+            
+            // Handle iframe load (call iFrameResize)
+            window.handleIframeLoad = function(iframe) {
+                if (iframe.src !== 'about:blank') {
+                    iFrameResize({}, iframe);
+                }
+            };
             // When the page loads, select and display 3 random blog posts
             const randomBlogs = getRandomBlogs(blogPosts, 3);
             updateExploreSection(randomBlogs);
