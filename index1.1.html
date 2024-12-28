@@ -9,800 +9,103 @@
     <!-- font awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- CSS Styles (embedded within the HTML) -->
+    <!-- styl.css -->
+    <link rel="stylesheet" href="style.css">
+
     <style>
-        /* Loading Screen Styles */
-        #loader-wrapper {
+        /* Popup Styles */
+        .popup-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1000; /* Ensure it stays on top */
-            background-color: #222; /* Or your preferred background color */
-            display: flex;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Initially hidden */
             justify-content: center;
             align-items: center;
+            z-index: 1000;
         }
-
-        /* Hide the main content initially, more specific rule */
-        body > #site-main {
-            display: none;
-        }
-
-        /* Physics Animation */
-        .physics-loader {
-            width: 150px;
-            height: 150px;
-        }
-
-        .atom {
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            text-align: center;
             position: relative;
-            width: 100%;
-            height: 100%;
         }
-
-        .nucleus {
+        .close-button {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 30px;
-            height: 30px;
-            background-color: #FF00FF;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .electron-path {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px dashed #9370DB;
-            transform: translate(-50%, -50%) rotate(45deg);
-            animation: orbit 5s linear infinite;
-        }
-
-        .electron-path > div {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 15px;
-            height: 15px;
-            background-color: #BA55D3;
-            border-radius: 50%;
-            transform: translateX(-50%);
-        }
-
-        @keyframes orbit {
-            0% {
-                transform: translate(-50%, -50%) rotate(45deg);
-            }
-            100% {
-                transform: translate(-50%, -50%) rotate(405deg);
-            }
-        }
-
-        /* Other CSS styles */
-       body{
-        background: black;
-        color: #f5f5f5;
-        font: 100 1.3rem "Cardo";
-        line-height: 1.5;
-        margin: 0;
-        overflow-x: hidden;
-        }
-
-        a{
-            text-decoration: none;
-        }
-
-        ul{
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .text-center{
-            text-align: center;
-        }
-
-        .text-secondary{
-            color: var(--secondary-color);
-        }
-
-        .text-light{
-            color: var(--light-color);
-        }
-
-        .text-black{
-            color: var(--dark-color);
-        }
-
-        .text-gray{
-            color: var(--text-gray);
-        }
-
-        .bg-dark{
-            background: var(--dark-color);
-        }
-
-        .bg-light{
-            background: var(--light-color);
-        }
-
-        .bg-secondary{
-            background: var(--secondary-color);
-        }
-
-        .btn{
-            padding: .6rem 2rem;
-            border: none;
-            margin: .5rem 0;
+            top: 10px;
+            right: 10px;
             cursor: pointer;
-            font: normal 500 1.2rem var(--roboto);
-            text-transform: uppercase;
-            border-radius: 3px;
-            transition: color .2s ease;
-        }
-
-        .btn-primary{
-            background-color: var(--primary-color);
-            color: var(--white-color);
-        }
-
-        .btn-primary:hover{
-            background-color: var(--white-color);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-
-        .btn-secondary{
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-        }
-
-        .btn-secondary:hover{
-            background-color: var(--white-color);
-            color: var(--secondary-color);
-            border: 1px solid var(--secondary-color);
-        }
-
-        .btn-shadow{
-            box-shadow: 0 10px 20px 1px #f1f2f675;
-        }
-
-        .hover-border:hover{
-            border: 1px solid var(--primary-color);
-        }
-
-        .container{
-            width: 90%;
-            margin: 0 auto;
-        }
-
-        .text-title{
-            font: normal 700 2.5rem var(--roboto);
-            text-transform: uppercase;
-        }
-
-        .d-flex{
-            display: flex;
-        }
-
-        .flex-row{
-            flex-direction: row;
-        }
-
-        .flex-column{
-            flex-direction: column;
-        }
-
-        .flex-wrap{
-            flex-wrap: wrap;
-        }
-
-        .flex-initial{
-            flex: 0 1 auto;
-        }
-
-        .flex-grow{
-            flex-grow: 1;
-        }
-
-        .justify-content-center{
-            justify-content: center;
-        }
-
-        .justify-content-between{
-            justify-content: space-between;
-        }
-
-        .justify-content-start{
-            justify-content: flex-start;
-        }
-
-        .justify-content-end{
-            justify-content: flex-end;
-        }
-
-        .text-uppercase{
-            text-transform: uppercase;
-        }
-
-        .text-center{
-            text-align: center;
-        }
-
-        .flex-item{
-            flex-basis: 100%;
-        }
-
-        .grid{
-            display: grid;
-        }
-
-        .px-1{
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        .py-1{
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .py-2{
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-
-        .mb-1{
-            margin-bottom: 1rem;
-        }
-
-        .mb-2{
-            margin-bottom: 1.5rem;
-        }
-
-        .mb-3{
-            margin-bottom: 2rem;
-        }
-
-        .m-0{
-            margin: 0;
-        }
-
-        .font-cardo{
-            font-family: var(--cardo);
-        }
-
-        .font-roboto{
-            font-family: var(--roboto);
-        }
-
-        .font-size-14{
-            font-size: 14px;
-        }
-
-        .font-size-16{
-            font-size: 16px;
-        }
-
-        .font-size-20{
             font-size: 20px;
         }
-
-        .font-size-22{
-            font-size: 22px;
+        .popup-content h1 {
+            color: #007bff; /* A nice blue color */
+            margin-bottom: 10px; /* Reduced spacing */
+            font-size: 36px;
+        }
+        .popup-content h2 {
+            color: #ff4500; /* Festive color for "Happy New Year" */
+            margin-top: 0;    /* Reduced spacing */
+            font-size: 28px;
+        }
+        .popup-content p {
+            font-size: 18px;
+            line-height: 1.5;
         }
-
-        .font-size-25{
-            font-size: 25px;
-        }
-
-        .font-size-30{
-            font-size: 30px;
-        }
-
-        .font-size-50{
-            font-size: 50px;
-        }
-
-        .text-shadow{
-            text-shadow: 1px 1px 1px var(--text-shadow-color);
-        }
-
-        .bold-800{
-            font-weight: 800;
-        }
-
-        .width-50{
-            width: 50%;
-        }
-
-        .width-80{
-            width: 80%;
-        }
-
-        .border-inline-end{
-            border-inline-end: 1px solid var(--border-color);
-        }
-
-        .bg-shadow{
-            background: linear-gradient(0deg, var(--primary-color), var(--white-color));
-        }
-
-        /* typography */
-
-        :root{
-            --primary-color: #4458dc;
-            --primary-color2: #854fee;
-            --title-color: #141313;
-            --text-gray: #959595;
-            --text-light: #f6f6f6;
-            --border-color: #21d5fd;
-            --bg-color: #0f0f0f;
-            --white-color: #ffffff;
-            --dark-color: #040505;
-            --secondary-color: #ff7d00;
-            --text-shadow-color: #5d667273;
-            --box-shadow: 0px 0px 50px 0px rgb(0 0 0 / 5%);
-
-            /* font-family */
-            --font-roboto: "Roboto",Arial, Helvetica, sans-serif;
-            --font-cardo: "Cardo", Helvetica, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            padding: 0;
-            margin: 0;
-            
-        }
-        .close-button:hover{
-            cursor:pointer;
-        }
-        .close-button{
-            border: none;
-        }
-        body {
-          
-            background-color: black;
-            color: #fff;
-        }
-        .about-us {
-            padding: 50px 0;
-            text-align: center;
-        }
-        
-        .about-us__intro {
-            margin-bottom: 30px;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .about-us__body {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        
-        .btn-group {
-            display: flex;
-            justify-content: center;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.1rem;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn-primary {
-            background-color: #6c63ff;
-            color: #fff;
-        }
-        
-        .btn-primary:hover {
-            background-color: #564dc3;
-        }
-        
-        .hover-border:hover {
-            border: 2px solid #6c63ff;
-        }
-        .events-showcase {
-            padding: 50px 0;
-            text-align: center;
-        }
-        
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 40px;
-        }
-        
-        .blog-box {
-            background-color: #222;
-            border-radius: 10px;
-            margin: 20px;
-            overflow: hidden;
-            width: 350px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .blog-box:hover {
-            transform: translateY(-5px);
-        }
-        
-        .blog-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .blog-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .blog-box:hover .blog-img img {
-            transform: scale(1.1);
-        }
-        
-        .blog-text {
-            padding: 20px;
-        }
-        
-        .blog-text span {
-            display: block;
-            color: #999;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        
-        .blog-title {
-            font-size: 1.3rem;
-            color: #fff;
-            text-decoration: none;
-            margin-bottom: 10px;
-        }
-        
-        .blog-title:hover {
-            color: #6c63ff;
-        }
-        
-        .blog-text p {
-            color: #ccc;
-            margin-bottom: 15px;
-        }
-        
-        .btn-primary {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #6c63ff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            background-color: #564dc3;
-        }
-        
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            transition: 200ms ease-in-out;
-            border: 1px solid black;
-            border-radius: 10px;
-            z-index: 10;
-            background-color: white;
-            width: 500px;
-            max-width: 80%;
-          }
-          
-          .modal.active {
-            transform: translate(-50%, -50%) scale(1);
-          }
-          
-          .modal-header {
-            padding: 10px 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid black;
-          }
-          
-          .modal-header .title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: black;
-          }
-          
-          .modal-header .close-button {
-            cursor: pointer;
-            border: none;
-            outline: none;
-            background: none;
-            font-size: 1.25rem;
-            font-weight: bold;
-          }
-          
-          .modal-body {
-            padding: 10px 15px;
-            color: black;
-          }
-          
-          #overlay {
-            position: fixed;
-            opacity: 0;
-            transition: 200ms ease-in-out;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, .5);
-            pointer-events: none;
-          }
-          
-          #overlay.active {
-            opacity: 1;
-            pointer-events: all;
-          }
-          .updates-showcase {
-            padding: 50px 0;
-            text-align: center;
-        }
-        
-        .blogs-showcase {
-            padding: 50px 0;
-            text-align: center;
-        }
-        .blog-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin-top: 40px;
-        }
-        .blog-box2 {
-            background-color: #222;
-            border-radius: 10px;
-            margin: 20px;
-            overflow: hidden;
-            width: 350px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s ease;
-        }
-        
-        .blog-box2:hover {
-            transform: translateY(-5px);
-        }
-        .blog-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .blog-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        
-        .blog-box2:hover .blog-img img {
-            transform: scale(1.1);
-        }
-        
-        .blog-text {
-            padding: 20px;
-        }
-        .blog-title {
-            font-size: 1.3rem;
-            color: #fff;
-            text-decoration: none;
-            margin-bottom: 10px;
-        }
-        .blog-title:hover {
-            color: #6c63ff;
-        }
-        
-        .blog-text p {
-            color: #ccc;
-            margin-bottom: 15px;
-        }
-        
-        /* Main */
-
-        main{
-            margin-top: 10vmin;
-            width: 100%;
-            overflow: hidden;
-        }
-
-        /* Navigation Bar */
-
-        .toggle-button{
-            background: transparent;
-            position: absolute;
-            top: 3rem;
-            right: 0;
-            cursor: pointer;
-            display: none;
-        }
-
-        .toggle-button .fas{
-            font-size: 1.8rem;
-            color: var(--text-gray);
-        }
-
-        .collapse{
-            width: 100%;
-            transition: height 1s ease;
-        }
-
-        .collapse ul{
-            flex-direction: column;
-            width: 80%;
-            margin: 3rem auto;
-        }
-
-        .collapse .nav-link{
-            padding: 1rem 1.8rem;
-            font: normal 500 1.7rem var(--roboto);
-            color: #f5f5f5;
-        }
-
-        .collapse .nav-link:hover{
-            color: var(--primary-color);
-        }
-
-        header .nav-link{
-            padding: 0 1.8rem;
-            font: normal 500 1.3rem var(--roboto);
-            color: #f5f5f5;
-            position: relative;
-            transition: color .2s ease-in;
-        }
-        .navbar{
-            padding: 1rem 0;
-        }
-
-        header .nav-link:hover{
-            color: var(--primary-color);
-        }
-
-        header .nav-link::after{
-            content: "";
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: var(--primary-color);
-            transition: width .5s ease;
-        }
-
-        header .nav-link:hover::after{
-            width: 100%;
-        }
-
-        .navbar-nav{
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Navigation Bar end */
-        /* Footer */
-        #footer{
-            margin-top: 10vmin;
-            background: var(--dark-color);
-        }
-
-        .footer-title{
-            font: normal 700 2rem var(--roboto);
-            color: var(--white-color);
-            margin: 3rem 0;
-        }
-
-        .footer-link{
-            color: var(--text-gray);
-            font: normal 500 1.2rem var(--roboto);
-            display: block;
-            margin: 1.5rem 0;
-        }
-
-        .footer-link:hover{
-            color: var(--primary-color);
-        }
-        .footer-para{
-            color: var(--text-gray);
-            font: normal 500 1.1rem var(--roboto);
-        }
-        #footer .fab{
-            font-size: 2rem;
-            color: var(--text-gray);
-            padding: 1rem;
-            transition: color .2s ease-in;
-        }
-
-        #footer .fab:hover{
-            color: var(--primary-color);
-        }
-        .object-fit{
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .display-1{
-            font: normal 900 4rem var(--roboto);
-            color: var(--white-color);
-        }
-        .flex-item{
-            flex-basis: 50%;
-        }
-        .display-2{
-            font: normal 700 2rem var(--roboto);
-            color: var(--white-color);
-        }
-        .display-3{
-            font: normal 500 1.5rem var(--roboto);
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Preloader HTML -->
-    <div id="loader-wrapper">
-        <div class="physics-loader">
-            <div class="atom">
-                <div class="nucleus"></div>
-                <div class="electron-path">
-                    <div></div>
-                </div>
-            </div>
+    <!-- New Year Popup -->
+    <div class="popup-overlay">
+        <div class="popup-content">
+            <span class="close-button" onclick="closePopup()">X</span>
+            <h1>A Year of Great Changes</h1>
+            <h2>Happy New Year!</h2>
+            <p>Embrace the new opportunities and adventures that await in 2025!</p>
         </div>
     </div>
 
+    <!-- Rest of your website code (header, sections, footer, etc.) -->
+
+    <!-- custom javascript main.js file -->
+
+    <script src="./js folder/three.min.js"></script>
+    <script src="./js folder/staranimation.js" class="js-prop"></script>
+
+
+
     <main id="site-main">
-        <!-- Header -->
-        <header id="header" class="shadow bg-transparent">
+        <!-- Header   -->
+        <header id="header" class ="shadow bg-transparent">
             <nav class="container navbar">
-                <a href="./index.html">
-                    <img src="./Images/psit_sqr_white.png" width="200" height="200" alt="PSIT Logo">
-                </a>
+              <a href="./index.html"><img src="./Images/psit_sqr_white.png" width="200" height="200"></a>
+
                 <button class="toggle-button">
-                    <span><i class="fas fa-bars"></i></span>
+                    <span>
+                        <i class="fas fa-bars"></i>
+                    </span>
                 </button>
+
+                <!-- collapse on toggle button click -->
                 <div class="collapse">
                     <ul class="navbar-nav">
-                        <li><a href="./index.html" class="nav-link">Home</a></li>
-                        <li><a href="./Team Page/index_team.html" class="nav-link">Meet The Team</a></li>
-                        <li><a href="./Blog Page/index_blog.html" class="nav-link">Blog</a></li>
-                        <li><a href="./Events Page/index_events.html" class="nav-link">Events</a></li>
-                        <li><a href="./Resources/index_resources.html" class="nav-link">Resources</a></li>
+                        <a href="./index.html" class="nav-link">Home</a>
+                        <a href="./Team Page/index_team.html" class="nav-link">Meet The Team</a>
+                        <a href="./Blog Page/index_blog.html" class="nav-link">Blog</a>
+                        <a href="./Events Page/index_events.html" class="nav-link">Events</a>
+                        <a href="./Resources/index_resources.html" class="nav-link">Resources</a>
+
                     </ul>
                 </div>
             </nav>
         </header>
+        <!-- Header End-->
 
-        <!-- About Us Section -->
+        <script src="./js folder/main.js"></script>
+
         <section class="about-us">
             <header class="about-us__intro">
                 <h2 class="section-title">What is <a href="./background/background.html" style="font-family:Cardo;color:white">Ψ(t)</a> ?</h2>
@@ -818,18 +121,23 @@
             </div>
         </section>
 
-        <!-- Events Section -->
+        <!-- Events -->
+        <script defer src="./js folder/modal.js"></script>
         <section class="events-showcase">
             <header>
-                <h2 class="section-title">Recent Events</h2>
+                <h2 class="section-title"> Recent Events</h2>
             </header>
+
             <div class="blog-container">
+
                 <!-- Event 1 -->
+
                 <div class="blog-box">
                     <div class="blog-text">
                         <span>1st Sep 2022</span>
                         <a href="#" class="blog-title">Elective Talk Series</a>
-                        <p>PSI(T) launched its brand new talk series on electives, on the 1st of September, with the topic in discussion being Quantum Field Theory presented by Sharang R. Iyer, a fifth year BS-MS Student.</p>
+                        <p>PSI(T) launched its brand new talk series on electives, on the 1st of September, with the topic in discussion being Quantum Field Theory presented by Sharang R. Iyer, a fifth year BS-MS Student.
+                        </p>
                         <a href="#" data-modal-target="#modal1" class="btn btn-primary hover-border"><span>Read More</span></a>
                         <div class="modal" id="modal1">
                             <div class="modal-header">
@@ -837,20 +145,24 @@
                                 <button data-close-button class="close-button">×</button>
                             </div>
                             <div class="modal-body">
-                                PSI(T) launched its brand new talk series on electives, on the 1st of September, with the topic in discussion being Quantum Field Theory presented by Sharang R. Iyer, a fifth year BS-MS Student.
-                                Dr. Anil Shaji from School of Physics teaches this course. The essence of this theory is that it combines classical relativity and quantum mechanics. These are steps leading to the unified theory and the standard model.
-                                The problem of time in Schrodinger’s equation, negative energy solutions for relativistic wave equations, etc are studied. Other topics that are covered include quantum ideas involving states of various particles, classical field theory( which involves the math of vectors, tensors and spinors), Klein-Gordon Field and Dirac Field, quantizing and Feynman diagrams. Overall it was a fruitful discussion, which gave an insight into one of the electives provided here in IISER Thiruvananthapuram to students looking to major in physics.
-                            </div>
+                              PSI(T) launched its brand new talk series on electives, on the 1st of September, with the topic in discussion being Quantum Field Theory presented by Sharang R. Iyer, a fifth year BS-MS Student.
+                              Dr. Anil Shaji from School of Physics teaches this course.The essence of this theory is that it combines classical relativity and quantum mechanics. These are steps leading to the unified theory  and the standard model.
+                              The problem of time in Schrodinger’s equation, negative energy solutions for relativistic wave equations, etc are studied. Other topics that are covered include quantum ideas involving states of various particles, classical field theory( which involves the math of vectors, tensors and spinors), Klein-Gordon Field and Dirac Field, quantizing and Feynman diagrams. Overall it was a fruitful discussion, which gave an insight into one of the electives provided here in IISER Thiruvananthapuram to students looking to major in physics                            </div>
                         </div>
                         <div id="overlay"></div>
                     </div>
                 </div>
+
                 <!-- Event 2 -->
+
                 <div class="blog-box">
                     <div class="blog-text">
                         <span>20th August 2022</span>
                         <a href="#" class="blog-title">Peer Discussion</a>
-                        <p>It is evident that whenever quantum physicists give an object or phenomena the title of “quantum”, chances are that it serves as a window into a mysterious world of unseen possibilities and challenges alike. And so, in line with that thought, the topic of discussion is related to quantum computing, particularly spin qubits.</p>
+                        <p>It is evident that whenever quantum physicists give an object or phenomena the title of “quantum”,
+                          chances are that it serves as a window into a mysterious world of unseen possibilities and challenges alike. And so, in line with that thought, the topic of discussion is related to quantum computing, particularly spin qubits.
+
+                        </p>
                         <a href="#" data-modal-target="#modal2" class="btn btn-primary hover-border"><span>Read More</span></a>
                         <div class="modal" id="modal2">
                             <div class="modal-header">
@@ -858,18 +170,29 @@
                                 <button data-close-button class="close-button">×</button>
                             </div>
                             <div class="modal-body">
-                                It is evident that whenever quantum physicists give an object or phenomena the title of “quantum”, chances are that it serves as a window into a mysterious world of unseen possibilities and challenges alike. And so, in line with that thought, the topic of discussion is related to quantum computing, particularly spin qubits. Quantum computers are devices that perform computations based on quantum principles such as superposition, entanglement and interference. The computers that we use everyday perform operations using bits such as 0 and 1. Analogous to this, the quantum computer uses quantum bits or qubits that can be zero and one or a superposition of these two states. A photon, electron or even a nucleus can be used as a qubit. All the fuss about quantum computing makes it seem like it is the next big thing in the tech world, and as we are at the dawn of the era of artificial intelligence, the power of quantum computing might serve as the key to unlocking the gates to a new frontier and who knows what we will be able to achieve with it.
+                              It is evident that whenever quantum physicists give an object or phenomena the title of “quantum”,
+                             chances are that it serves as a window into a mysterious world of unseen possibilities and challenges alike.
+                             And so, in line with that thought, the topic of discussion is related to quantum computing, particularly spin qubits.
+                             Quantum computers are devices that perform computations based on quantum principles such as superposition,entanglement and interference.
+                             The computers that we use everyday perform operations using bits such as 0 and 1. Analogous to this, the quantum computer uses quantum bits or qubits that can be zero and one or a superposition of these two states.
+                             A photon,electron or even a nucleus can be used as a qubit.
+
+                             All the fuss about quantum computing makes it seem like it is the next big thing in the tech world, and as we are at the dawn of the era of artificial intelligence, the power of quantum computing might serve as the key to unlocking the gates to a new frontier and who knows what we will be able to achieve with it.
+
                             </div>
                         </div>
                         <div id="overlay"></div>
                     </div>
                 </div>
+
                 <!-- Event 3 -->
+
                 <div class="blog-box">
                     <div class="blog-text">
                         <span>13th August 2022</span>
                         <a href="#" class="blog-title">Movie Screening</a>
-                        <p>We are delighted to inform you that the Physics Society of IISER TVM (PSIT) will be starting off this semester’s activities by our monthly screenings with yet another high rated all time sci-fi classic.</p>
+                        <p>We are delighted to inform you that the Physics Society of IISER TVM (PSIT) will be starting off this semester’s activities by our monthly screenings with yet another high rated all time sci-fi classic.
+                        </p>
                         <a href="#" data-modal-target="#modal3" class="btn btn-primary hover-border"><span>Read More</span></a>
                         <div class="modal" id="modal3">
                             <div class="modal-header">
@@ -877,241 +200,238 @@
                                 <button data-close-button class="close-button">×</button>
                             </div>
                             <div class="modal-body">
+                              <div class="modal-body">
                                 We are delighted to inform you that the Physics Society of IISER TVM (PSIT) will be starting off this semester’s activities by our monthly screenings with yet another high rated all time sci-fi classic.
                                 Back to the Future is a 1985 American science fiction film directed by Robert Zemeckis, and written by Zemeckis and Bob Gale. It stars Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover, and Thomas F. Wilson. Set in 1985, the story follows Marty McFly (Fox), a teenager accidentally sent back to 1955 in a time-traveling DeLorean automobile built by his eccentric scientist friend Emmett "Doc" Brown (Lloyd). While in the past, Marty inadvertently prevents his future parents from falling in love—threatening his existence—and is forced to reconcile the pair and somehow get back to the future.
+
                                 Hope that you will enjoy the show and cheers for your new semester!
                             </div>
                         </div>
                         <div id="overlay"></div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Updates Section -->
+            </div>
+
+        </section>
         <section class="updates-showcase">
             <header>
                 <h2 class="section-title">Updates</h2>
             </header>
-            <center>
-                <script src="https://embedsocial.com/js/iframe.js"></script>
-                <iframe style="border: 0; width: 65%; height: 300px;" scrolling="no" src="https://embedsocial.com/api/pro_hashtag/3f187510ffe47e19080dc279c7cae4867d368279"></iframe>
-                <script>iFrameResize();</script>
-            </center>
+        <center>
+    <script src="https://embedsocial.com/js/iframe.js"></script>
+    <iframe style="border: 0; width: 65%; height: 300px;" scrolling="no" 
+        src="https://embedsocial.com/api/pro_hashtag/3f187510ffe47e19080dc279c7cae4867d368279">
+    </iframe>
+    <script>iFrameResize();</script>
+</center>
         </section>
-
-        <!-- Explore Section -->
+    
         <section class="blogs-showcase">
             <header>
                 <h2 class="section-title">Explore</h2>
             </header>
-            <div class="blog-container" id="explore-blog-container"></div>
+            <div class="blog-container" id="explore-blog-container">
+                </div>
         </section>
 
-        <!-- Footer -->
         <footer id="footer">
             <div class="container">
-                <div class="row mb-3">
+              <div class="row mb-3">
+
                     <div class="col-3">
                         <h3 class="footer-title secondary-title">Featured Posts</h3>
-                        <div class="feature-post py-1" id="featured-posts-container"></div>
-                    </div>
-                    <div class="col-3">
-                        <h3 class="footer-title secondary-title">Other Links</h3>
-                        <div class="secondary-title text-light mb-1">
-                            <div class="mt-2">
-                                <a target="_blank" class="footer-link text-light" href="https://physics.iisertvm.ac.in/">School of Physics</a><br>
-                                <a target="_blank" class="footer-link text-light" href="http://www.iisertvm.ac.in/">IISER Thiruvananthapuram</a><br>
-                            </div>
-                            <div class="email">
-                                <i class="fas fa-envelope text-secondary"></i>
-                                psit@iisertvm.ac.in
-                                <div class="collapse">
-                                    <ul class="navbar-nav">
-                                        <div class="insta-icon">
-                                            <a href="https://www.instagram.com/psitiiser/" class="nav-link"><i class="fab fa-instagram"></i></a>
-                                        </div>
-                                        <a href="https://m.facebook.com/psitiiser" class="nav-link"><i class="fab fa-facebook"></i></a>
-                                        <a href="https://www.youtube.com/c/psitiiser/featured" class="nav-link"><i class="fab fa-youtube"></i></a>
-                                    </ul>
-                                </div>
-                            </div>
+
+                        <div class="feature-post py-1" id="featured-posts-container">
                         </div>
                     </div>
+
+                    <div class="col-3">
+                      <h3 class="footer-title secondary-title">Other Links</h3>
+                        <div class ="secondary-title text-light mb-1">
+                          <div class="mt-2">
+                            <a target="_blank" class="footer-link text-light" href="https://physics.iisertvm.ac.in/">School of Physics</a><br>
+                            <a target="_blank" class="footer-link text-light" href="http://www.iisertvm.ac.in/">IISER Thiruvananthapuram</a><br>
+                          </div>
+
+                                <!-- <address class="mt-2">
+                                    <i class="fas fa-map-marker-alt text-secondary"></i>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing.
+                                </address> -->
+
+                                <!-- <div class="phone">
+                                    <i class="fas fa-mobile text-secondary"></i>
+                                    123-456-7890
+                                </div> -->
+
+                         <div class="email">
+                           <i class="fas fa-envelope text-secondary"></i>
+                              psit@iisertvm.ac.in
+                              <div class="collapse">
+                                <ul class="navbar-nav">
+                                <div class="insta-icon">
+                                  <a href="https://www.instagram.com/psitiiser/" class="nav-link"><i class="fab fa-instagram"></i></a>
+                                </div>
+                                  <a href="https://m.facebook.com/psitiiser" class="nav-link"><i class="fab fa-facebook"></i></a>
+                                  <a href="https://www.youtube.com/c/psitiiser/featured" class="nav-link"><i class="fab fa-youtube"></i></a>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+
                 </div>
             </div>
         </footer>
-    </main>
 
-    <!-- JavaScript (embedded within the HTML) -->
+    </main>
     <script>
-        // Array of blog posts
+        // Array of blog posts (NOW INCLUDED)
         const blogPosts = [
             {
                 "title": "From the Holographic Principle to ADS/CFT",
                 "imageUrl": "./Blog Page/holocft1.png",
                 "link": "./Blog Page/holograph_cft.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "The Phenomenon of Quantum Tunneling and How It's Used in Scanning Tunneling Microscopy",
                 "imageUrl": "./Blog Page/qtnling1.jpg",
                 "link": "./Blog Page/qmtnling_stm.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "Frontier: Mpemba Effect",
                 "imageUrl": "./Blog Page/b0b2c5f14ca5de02d038.jpeg",
                 "link": "./Blog Page/mpemba.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "Spotlight: W-Boson, The Mass Anomaly",
                 "imageUrl": "./Blog Page/4db3aaa641795bafafea.jpeg",
                 "link": "./Blog Page/wboson.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "Conceptualise: Handstand",
                 "imageUrl": "./Blog Page/3d360fdc09d9feef7bec.jpeg",
                 "link": "./Blog Page/handstand.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "Review: The Elegant Universe",
                 "imageUrl": "./Blog Page/67c79ceb0deb5d44bb32.jpeg",
                 "link": "./Blog Page/elegant.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "Curtain Call: Deepak Dhar",
                 "imageUrl": "./Blog Page/d039354923097ba72254.jpeg",
                 "link": "./Blog Page/deepak.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "What is? : Quantum Levitation",
                 "imageUrl": "./Blog Page/269ae617c0c30b4ee0a0.jpeg",
                 "link": "./Blog Page/levitation.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "Musings: the Future of Space Travel",
                 "imageUrl": "./Blog Page/a38cfb9ff07cfe120d15.jpeg",
                 "link": "./Blog Page/spacetravel.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             },
             {
                 "title": "Eureka: Super Kamiokande",
                 "imageUrl": "./Blog Page/8d00848ec0f8cdd38689.jpeg",
                 "link": "./Blog Page/eureka.html",
-                "excerpt": ""
+                "excerpt": "" // Add excerpt if you have one for this post
             }
         ];
-
+    
         // Function to get 'num' random elements from an array without repetition
         function getRandomBlogs(allBlogs, num) {
-            const shuffled = [...allBlogs].sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, num);
+            const shuffled = [...allBlogs].sort(() => 0.5 - Math.random()); // Shuffle the array
+            return shuffled.slice(0, num); // Return the first 'num' elements
         }
-
+    
         // Function to create the HTML for a single blog post
         function createBlogElement(blogData) {
             const blogBox = document.createElement('div');
             blogBox.classList.add('blog-box2');
+    
             blogBox.innerHTML = `
                 <div class="blog-img">
                     <img src="${blogData.imageUrl}" alt="Blog">
                 </div>
                 <div class="blog-text">
+                    
                     <a href="${blogData.link}" class="blog-title">${blogData.title}</a>
                     <p>${blogData.excerpt}</p>
                     <a href="${blogData.link}" class="btn btn-primary hover-border"><span>Read More</span></a>
                 </div>
             `;
+    
             return blogBox;
         }
-
+    
         // Function to update the Explore section with new blog posts
         function updateExploreSection(blogs) {
             const container = document.getElementById('explore-blog-container');
-            container.innerHTML = '';
+            container.innerHTML = ''; // Clear existing content
+    
             blogs.forEach(blog => {
                 const blogElement = createBlogElement(blog);
                 container.appendChild(blogElement);
             });
         }
-
+    
         // When the page loads, select and display 3 random blog posts
         window.addEventListener('load', () => {
             const randomBlogs = getRandomBlogs(blogPosts, 3);
             updateExploreSection(randomBlogs);
         });
 
-        // Function to display featured posts in the footer
-        function displayFeaturedPosts() {
-            const featuredPostsContainer = document.getElementById('featured-posts-container');
-            const randomPosts = getRandomBlogs(blogPosts, 3);
-            randomPosts.forEach(post => {
-                const postElement = document.createElement('div');
-                postElement.classList.add('flex-item');
-                postElement.innerHTML = `
-                    <article class="article">
-                        <div class="d-flex">
-                            <a href="${post.link}">
-                                <img src="${post.imageUrl}" class="object-fit" alt="">
-                                <div class="px-1 mt-1">
-                                    <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
-                                    <p class="secondary-title text-secondary display-3"></p>
-                                </div>
-                            </a>
-                        </div>
-                    </article>
-                `;
-                featuredPostsContainer.appendChild(postElement);
-            });
+                 // Function to display featured posts in the footer
+                 function displayFeaturedPosts() {
+             const featuredPostsContainer = document.getElementById('featured-posts-container');
+             const randomPosts = getRandomBlogs(blogPosts, 3);
+
+             randomPosts.forEach(post => {
+                 const postElement = document.createElement('div');
+                 postElement.classList.add('flex-item');
+
+                 postElement.innerHTML = `
+                     <article class="article">
+                         <div class="d-flex">
+                             <a href="${post.link}">
+                                 <img src="${post.imageUrl}" class="object-fit" alt="">
+                                 <div class="px-1 mt-1">
+                                     <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
+                                     <p class="secondary-title text-secondary display-3"></p>
+                                 </div>
+                             </a>
+                         </div>
+                     </article>
+                 `;
+
+                 featuredPostsContainer.appendChild(postElement);
+             });
+         }
+
+         // Call the function to display featured posts in the footer
+         displayFeaturedPosts();
+
+         function closePopup() {
+            document.querySelector('.popup-overlay').style.display = 'none';
         }
 
-        // Call the function to display featured posts in the footer
-        displayFeaturedPosts();
+        // Show the popup when the page loads
+        window.addEventListener('load', () => {
+            document.querySelector('.popup-overlay').style.display = 'flex';
+        });
 
-      // Preloader Logic
-window.addEventListener('load', () => {
-    const loaderWrapper = document.getElementById('loader-wrapper');
-    const siteMain = document.getElementById('site-main');
-    const maximumLoadingTime = 4000; // 4 seconds maximum
-
-    function hideLoader() {
-        loaderWrapper.style.display = 'none';
-        siteMain.style.display = 'block';
-    }
-
-    // Ensure the loader is hidden after the maximum loading time
-    setTimeout(hideLoader, maximumLoadingTime);
-
-    // Optional: Hide the loader sooner if the page finishes loading before the timeout
-    // This can be useful for faster connections where the page might load well within 4 seconds
-    function checkPageLoadComplete() {
-        if (document.readyState === 'complete') {
-            hideLoader();
-        }
-    }
-
-    // Check for the 'complete' state of the page periodically
-    const pageLoadInterval = setInterval(() => {
-        if (document.readyState === 'complete') {
-            hideLoader();
-            clearInterval(pageLoadInterval); // Stop checking once the page is loaded
-        }
-    }, 500); // Check every 500 milliseconds
-
-    // As an additional safety measure, also hide the loader if the 'load' event fires before the timeout
-    window.addEventListener('load', hideLoader);
-});
     </script>
-    <script src="./js folder/modal.js"></script>
-    <script src="./js folder/three.min.js"></script>
-    <script src="./js folder/staranimation.js" class="js-prop"></script>
-     <script src="./js folder/main.js"></script>
 </body>
 </html>
