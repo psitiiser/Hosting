@@ -14,7 +14,7 @@
 
     <style>
         /* Popup Styles */
-        .popup-overlay {
+        #new-year-popup { /* More specific selector */
             position: fixed;
             top: 0;
             left: 0;
@@ -24,42 +24,43 @@
             display: none; /* Initially hidden */
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 1000; /* Ensure it's on top */
         }
-        .popup-content {
+        #new-year-popup .popup-content { /* More specific selector */
             background-color: #fff;
             padding: 30px;
             border-radius: 5px;
             text-align: center;
             position: relative;
         }
-        .close-button {
+        #new-year-popup .close-button { /* More specific selector */
             position: absolute;
             top: 10px;
             right: 10px;
             cursor: pointer;
             font-size: 20px;
         }
-        .popup-content h1 {
-            color: #007bff; /* A nice blue color */
-            margin-bottom: 10px; /* Reduced spacing */
+        #new-year-popup .popup-content h1 { /* More specific selector */
+            color: #007bff;
+            margin-bottom: 10px;
             font-size: 36px;
         }
-        .popup-content h2 {
-            color: #ff4500; /* Festive color for "Happy New Year" */
-            margin-top: 0;    /* Reduced spacing */
+        #new-year-popup .popup-content h2 { /* More specific selector */
+            color: #ff4500;
+            margin-top: 0;
             font-size: 28px;
         }
-        .popup-content p {
+        #new-year-popup .popup-content p { /* More specific selector */
             font-size: 18px;
             line-height: 1.5;
+            display: block !important;
         }
     </style>
 </head>
 <body>
 
     <!-- New Year Popup -->
-    <div class="popup-overlay">
+    <div id="new-year-popup" class="popup-overlay">
         <div class="popup-content">
             <span class="close-button" onclick="closePopup()">X</span>
             <h1>A Year of Great Changes</h1>
@@ -69,13 +70,6 @@
     </div>
 
     <!-- Rest of your website code (header, sections, footer, etc.) -->
-
-    <!-- custom javascript main.js file -->
-
-    <script src="./js folder/three.min.js"></script>
-    <script src="./js folder/staranimation.js" class="js-prop"></script>
-
-
 
     <main id="site-main">
         <!-- Header   -->
@@ -103,9 +97,6 @@
             </nav>
         </header>
         <!-- Header End-->
-
-        <script src="./js folder/main.js"></script>
-
         <section class="about-us">
             <header class="about-us__intro">
                 <h2 class="section-title">What is <a href="./background/background.html" style="font-family:Cardo;color:white">Ψ(t)</a> ?</h2>
@@ -122,7 +113,6 @@
         </section>
 
         <!-- Events -->
-        <script defer src="./js folder/modal.js"></script>
         <section class="events-showcase">
             <header>
                 <h2 class="section-title"> Recent Events</h2>
@@ -285,153 +275,158 @@
         </footer>
 
     </main>
+
+    <!-- Scripts -->
+    <script src="./js folder/three.min.js"></script>
+    <script src="./js folder/staranimation.js" class="js-prop"></script>
+    <script src="./js folder/main.js"></script>
+    <script defer src="./js folder/modal.js"></script>
+
     <script>
-        // Array of blog posts (NOW INCLUDED)
+        // Array of blog posts
         const blogPosts = [
             {
                 "title": "From the Holographic Principle to ADS/CFT",
                 "imageUrl": "./Blog Page/holocft1.png",
                 "link": "./Blog Page/holograph_cft.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "The Phenomenon of Quantum Tunneling and How It's Used in Scanning Tunneling Microscopy",
                 "imageUrl": "./Blog Page/qtnling1.jpg",
                 "link": "./Blog Page/qmtnling_stm.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "Frontier: Mpemba Effect",
                 "imageUrl": "./Blog Page/b0b2c5f14ca5de02d038.jpeg",
                 "link": "./Blog Page/mpemba.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "Spotlight: W-Boson, The Mass Anomaly",
                 "imageUrl": "./Blog Page/4db3aaa641795bafafea.jpeg",
                 "link": "./Blog Page/wboson.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "Conceptualise: Handstand",
                 "imageUrl": "./Blog Page/3d360fdc09d9feef7bec.jpeg",
                 "link": "./Blog Page/handstand.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "Review: The Elegant Universe",
                 "imageUrl": "./Blog Page/67c79ceb0deb5d44bb32.jpeg",
                 "link": "./Blog Page/elegant.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "Curtain Call: Deepak Dhar",
                 "imageUrl": "./Blog Page/d039354923097ba72254.jpeg",
                 "link": "./Blog Page/deepak.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "What is? : Quantum Levitation",
                 "imageUrl": "./Blog Page/269ae617c0c30b4ee0a0.jpeg",
                 "link": "./Blog Page/levitation.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "Musings: the Future of Space Travel",
                 "imageUrl": "./Blog Page/a38cfb9ff07cfe120d15.jpeg",
                 "link": "./Blog Page/spacetravel.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             },
             {
                 "title": "Eureka: Super Kamiokande",
                 "imageUrl": "./Blog Page/8d00848ec0f8cdd38689.jpeg",
                 "link": "./Blog Page/eureka.html",
-                "excerpt": "" // Add excerpt if you have one for this post
+                "excerpt": ""
             }
         ];
-    
+
         // Function to get 'num' random elements from an array without repetition
         function getRandomBlogs(allBlogs, num) {
-            const shuffled = [...allBlogs].sort(() => 0.5 - Math.random()); // Shuffle the array
-            return shuffled.slice(0, num); // Return the first 'num' elements
+            const shuffled = [...allBlogs].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, num);
         }
-    
+
         // Function to create the HTML for a single blog post
         function createBlogElement(blogData) {
             const blogBox = document.createElement('div');
             blogBox.classList.add('blog-box2');
-    
+
             blogBox.innerHTML = `
                 <div class="blog-img">
                     <img src="${blogData.imageUrl}" alt="Blog">
                 </div>
                 <div class="blog-text">
-                    
                     <a href="${blogData.link}" class="blog-title">${blogData.title}</a>
                     <p>${blogData.excerpt}</p>
                     <a href="${blogData.link}" class="btn btn-primary hover-border"><span>Read More</span></a>
                 </div>
             `;
-    
+
             return blogBox;
         }
-    
+
         // Function to update the Explore section with new blog posts
         function updateExploreSection(blogs) {
             const container = document.getElementById('explore-blog-container');
             container.innerHTML = ''; // Clear existing content
-    
+
             blogs.forEach(blog => {
                 const blogElement = createBlogElement(blog);
                 container.appendChild(blogElement);
             });
         }
-    
+
         // When the page loads, select and display 3 random blog posts
         window.addEventListener('load', () => {
             const randomBlogs = getRandomBlogs(blogPosts, 3);
             updateExploreSection(randomBlogs);
         });
 
-                 // Function to display featured posts in the footer
-                 function displayFeaturedPosts() {
-             const featuredPostsContainer = document.getElementById('featured-posts-container');
-             const randomPosts = getRandomBlogs(blogPosts, 3);
+        // Function to display featured posts in the footer
+        function displayFeaturedPosts() {
+            const featuredPostsContainer = document.getElementById('featured-posts-container');
+            const randomPosts = getRandomBlogs(blogPosts, 3);
 
-             randomPosts.forEach(post => {
-                 const postElement = document.createElement('div');
-                 postElement.classList.add('flex-item');
+            randomPosts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('flex-item');
 
-                 postElement.innerHTML = `
-                     <article class="article">
-                         <div class="d-flex">
-                             <a href="${post.link}">
-                                 <img src="${post.imageUrl}" class="object-fit" alt="">
-                                 <div class="px-1 mt-1">
-                                     <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
-                                     <p class="secondary-title text-secondary display-3"></p>
-                                 </div>
-                             </a>
-                         </div>
-                     </article>
-                 `;
+                postElement.innerHTML = `
+                    <article class="article">
+                        <div class="d-flex">
+                            <a href="${post.link}">
+                                <img src="${post.imageUrl}" class="object-fit" alt="">
+                                <div class="px-1 mt-1">
+                                    <a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
+                                    <p class="secondary-title text-secondary display-3"></p>
+                                </div>
+                            </a>
+                        </div>
+                    </article>
+                `;
 
-                 featuredPostsContainer.appendChild(postElement);
-             });
-         }
+                featuredPostsContainer.appendChild(postElement);
+            });
+        }
 
-         // Call the function to display featured posts in the footer
-         displayFeaturedPosts();
+        // Call the function to display featured posts in the footer
+        displayFeaturedPosts();
 
-         function closePopup() {
-            document.querySelector('.popup-overlay').style.display = 'none';
+        function closePopup() {
+            document.getElementById('new-year-popup').style.display = 'none';
         }
 
         // Show the popup when the page loads
         window.addEventListener('load', () => {
-            document.querySelector('.popup-overlay').style.display = 'flex';
+            document.getElementById('new-year-popup').style.display = 'flex';
         });
-
     </script>
 </body>
 </html>
