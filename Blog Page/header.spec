@@ -24,7 +24,8 @@
                         <ul class="navbar-nav"><a href="../index.html" class="nav-link">Home</a> <a
                                 href="../Team Page/index_team.html" class="nav-link">Meet The Team</a> <a
                                 href="../Blog Page/index_blog.html" class="nav-link">Blog</a> <a
-                                href="../Events Page/index_events.html" class="nav-link">Events</a></ul>
+                                href="../Events Page/index_events.html" class="nav-link">Resources</a>
+href="../Resources/index_resources.html" class="nav-link">Events</a></ul>
                     </div>
                     <ul class="navbar-nav"></ul>
                 </nav>
