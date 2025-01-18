@@ -204,7 +204,31 @@
                 </div>
 
             </div>
+<!-- HTML structure for displaying events on the homepage -->
+<div id="latest-events">
+    <h2>Latest Events</h2>
+    <div id="eventList"></div>
+</div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $.getJSON('./Events Page/events.json', function(data) {
+        var events = data.slice(0, 3); // Get the first 3 events
+        var html = '';
+        $.each(events, function(index, event) {
+            html += '<div class="event">';
+            html += '<h3>' + event.title + '</h3>';
+            html += '<p><strong>Date:</strong> ' + event.date + '</p>';
+            html += '<p><strong>Time:</strong> ' + event.time + '</p>';
+            html += '<p><strong>Location:</strong> ' + event.location + '</p>';
+            html += '<p>' + event.description + '</p>';
+            html += '</div>';
+        });
+        $('#eventList').html(html);
+    });
+});
+</script>
         </section>
         <section class="updates-showcase">
             <header>
