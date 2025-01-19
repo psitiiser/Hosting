@@ -25,22 +25,65 @@
          </div>
          <script src="0de295a0142760d57058.js"></script>
          <main id="site-main">
-            <section class="blogs-showcase">
-               <header>
-                  <h2 class="blog-heading">Explore</h2>
-               </header>
-               <div class="blog-container">
+            <title>Merchandise Gallery</title>
+  <style>
+    /* CSS styles for the gallery */
+    .merch-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 20px;
+      justify-content: center;
+    }
+    
+    .merch-item {
+      text-align: center;
+      border: 1px solid #ddd;
+      padding: 10px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .merch-image {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .merch-name {
+      font-weight: bold;
+    }
+    
+    .merch-price {
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Merchandise Gallery</h1>
+  <div class="merch-gallery">
+    <div class="merch-item">
+      <img class="merch-image" src="product1.jpg" alt="Product 1">
+      <h3 class="merch-name">Product 1</h3>
+      <p class="merch-price">$29.99</p>
+      <button>Add to Cart</button>
+    </div>
+    
+    <div class="merch-item">
+      <img class="merch-image" src="product2.jpg" alt="Product 2">
+      <h3 class="merch-name">Product 2</h3>
+      <p class="merch-price">$19.99</p>
+      <button>Add to Cart</button>
+    </div>
+    
+    <!-- Add more merchandise items here -->
+    
+    <div class="merch-item">
+      <img class="merch-image" src="productN.jpg" alt="Product N">
+      <h3 class="merch-name">Product N</h3>
+      <p class="merch-price">$XX.XX</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
 
-                
-                     <div class="blog-box">
-                        <div class="blog-img"><img src="Light-640x477.jpg" width="400" height="600" alt="Blog"></div>
-                        <div class="blog-text">
-                           
-                           <div class="blog-text">
-                        <a href="bb25.html" class="btn btn-primary hover-border"><span>Read More</span></a>
-                     </div>
-                        </div>
-                     </div>
                
 
             </section>
