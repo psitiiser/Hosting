@@ -25,65 +25,82 @@
          </div>
          <script src="0de295a0142760d57058.js"></script>
          <main id="site-main">
-            <title>Merchandise Gallery</title>
-  <style>
-    /* CSS styles for the gallery */
-    .merch-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-gap: 20px;
-      justify-content: center;
-    }
-    
-    .merch-item {
-      text-align: center;
-      border: 1px solid #ddd;
-      padding: 10px;
-      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .merch-image {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    
-    .merch-name {
-      font-weight: bold;
-    }
-    
-    .merch-price {
-      color: #888;
-    }
-  </style>
+           <title>Merchandise Showcase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .product {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-right: 20px;
+            background-color: transparent; /* Ensure images have transparent backgrounds */
+        }
+        .product-details {
+            flex-grow: 1;
+        }
+        .product-title {
+            font-size: 1.5em;
+            margin: 0;
+        }
+        .product-price {
+            color: #888;
+            margin: 5px 0;
+        }
+        .buy-now {
+            display: block;
+            width: 200px;
+            margin: 40px auto 0;
+            padding: 10px;
+            text-align: center;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 5px;
+        }
+        .buy-now:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-  <h1>Merchandise Gallery</h1>
-  <div class="merch-gallery">
-    <div class="merch-item">
-      <img class="merch-image" src="psit_sqr_white.png" alt="Product 1">
-      <h3 class="merch-name">Product 1</h3>
-      <p class="merch-price">$29.99</p>
-      <button>Add to Cart</button>
+    <div class="container">
+        <h1>Merchandise Gallery</h1>
+        <div class="product">
+            <img src="psit_sqr_white.png" alt="Product 1">
+            <div class="product-details">
+                <h2 class="product-title">Product 1</h2>
+                <p class="product-price">$29.99</p>
+            </div>
+        </div>
+        <div class="product">
+            <img src="product2.png" alt="Product 2">
+            <div class="product-details">
+                <h2 class="product-title">Product 2</h2>
+                <p class="product-price">$19.99</p>
+            </div>
+        </div>
+        <!-- Add more products as needed -->
+        <a href="checkout.html" class="buy-now">Buy Now</a>
     </div>
-    
-    <div class="merch-item">
-      <img class="merch-image" src="product2.jpg" alt="Product 2">
-      <h3 class="merch-name">Product 2</h3>
-      <p class="merch-price">$19.99</p>
-      <button>Add to Cart</button>
-    </div>
-    
-    <!-- Add more merchandise items here -->
-    
-    <div class="merch-item">
-      <img class="merch-image" src="productN.jpg" alt="Product N">
-      <h3 class="merch-name">Product N</h3>
-      <p class="merch-price">$XX.XX</p>
-      <button>Add to Cart</button>
-    </div>
-  </div>
-
                
 
             </section>
