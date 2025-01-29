@@ -35,7 +35,7 @@
          </div>
          <script src="0de295a0142760d57058.js"></script>
 <style>
-/* Merchandise Section Styles */
+/* Updated Merchandise Section */
 .merchandise-section {
   padding: 2rem;
   max-width: 1200px;
@@ -44,8 +44,8 @@
 
 .product-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
   padding: 2rem 0;
 }
 
@@ -54,20 +54,58 @@
   border-radius: 15px;
   padding: 1.5rem;
   backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-.product-card:hover {
-  transform: translateY(-5px);
+.image-slider {
+  position: relative;
+  height: 300px;
+  margin-bottom: 1rem;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
 }
 
 .product-image {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: contain;
-  background: transparent;
   border-radius: 10px;
+}
+
+.slider-nav {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.slider-dot.active {
+  background: #00ff88;
 }
 
 .product-info {
@@ -76,22 +114,23 @@
 }
 
 .product-title {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin-bottom: 0.5rem;
   color: #fff;
 }
 
 .product-price {
   color: #00ff88;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .buy-all-button {
   display: block;
-  width: 200px;
-  margin: 2rem auto;
-  padding: 1rem 2rem;
+  width: 220px;
+  margin: 3rem auto;
+  padding: 1.2rem 2.5rem;
   background: linear-gradient(45deg, #00ff88, #00ccff);
   color: #000;
   border: none;
@@ -99,10 +138,7 @@
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.3s ease;
-}
-
-.buy-all-button:hover {
-  transform: scale(1.05);
+  font-size: 1.1rem;
 }
 
 @media (max-width: 768px) {
@@ -111,13 +147,13 @@
     padding: 1rem;
   }
   
-  .product-card {
-    margin-bottom: 1.5rem;
+  .image-slider {
+    height: 250px;
   }
   
   .buy-all-button {
     width: 90%;
-    margin: 2rem auto;
+    padding: 1rem 2rem;
   }
 }
 </style>
@@ -125,41 +161,68 @@
 <main id="site-main">
   <section class="merchandise-section">
     <div class="product-container">
+      <!-- Product 1 -->
       <div class="product-card">
-        <img src="https://via.placeholder.com/150.png/000000/ffffff?text=Product+1" class="product-image" alt="Product 1">
+        <div class="image-slider">
+          <div class="slide active">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+1-A" class="product-image" alt="Product 1">
+          </div>
+          <div class="slide">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+1-B" class="product-image" alt="Product 1 Back">
+          </div>
+          <div class="slider-nav">
+            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+          </div>
+        </div>
         <div class="product-info">
           <h2 class="product-title">Quantum T-Shirt</h2>
           <p class="product-price">$25.00</p>
         </div>
       </div>
 
+      <!-- Product 2 -->
       <div class="product-card">
-        <img src="https://via.placeholder.com/150.png/000000/ffffff?text=Product+2" class="product-image" alt="Product 2">
+        <div class="image-slider">
+          <div class="slide active">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+2-A" class="product-image" alt="Product 2">
+          </div>
+          <div class="slide">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+2-B" class="product-image" alt="Product 2 Back">
+          </div>
+          <div class="slider-nav">
+            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+          </div>
+        </div>
         <div class="product-info">
           <h2 class="product-title">Physics Hoodie</h2>
           <p class="product-price">$45.00</p>
         </div>
       </div>
 
-      <div class="product-card">
-        <img src="https://via.placeholder.com/150.png/000000/ffffff?text=Product+3" class="product-image" alt="Product 3">
-        <div class="product-info">
-          <h2 class="product-title">Science Mug</h2>
-          <p class="product-price">$15.00</p>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="https://via.placeholder.com/150.png/000000/ffffff?text=Product+4" class="product-image" alt="Product 4">
-        <div class="product-info">
-          <h2 class="product-title">Lab Notebook</h2>
-          <p class="product-price">$12.00</p>
-        </div>
-      </div>
+      <!-- Add more products following the same structure -->
     </div>
 
     <button class="buy-all-button">Explore All Products</button>
   </section>
+</main>
+
+<script>
+function showSlide(button, index) {
+  const slider = button.closest('.image-slider');
+  const slides = slider.querySelectorAll('.slide');
+  const dots = slider.querySelectorAll('.slider-dot');
+
+  // Remove active class from all slides and dots
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
+
+  // Add active class to selected slide and dot
+  slides[index].classList.add('active');
+  button.classList.add('active');
+}
+</script>
 </main>
          </section>
          <footer id="footer">
