@@ -160,7 +160,90 @@
   }
 }
 </style>
+<style>
+/* Buy Now Button */
+.buy-now-btn {
+  background: #00ff88;
+  color: #000;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 200px;
+}
 
+.buy-now-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+/* Modal Overlay */
+.form-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #111;
+  width: 90%;
+  max-width: 500px;
+  margin: 5% auto;
+  padding: 25px;
+  border-radius: 15px;
+  position: relative;
+  border: 1px solid #00ff88;
+}
+
+/* Form Styling */
+.order-form .form-group {
+  margin: 15px 0;
+}
+
+.order-form label {
+  color: #00ff88;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.order-form input, 
+.order-form select {
+  width: 100%;
+  padding: 12px;
+  background: #222;
+  border: 1px solid #333;
+  color: #fff;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.order-form input:focus, 
+.order-form select:focus {
+  outline: 2px solid #00ff88;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 10% auto;
+    padding: 15px;
+  }
+  
+  .buy-now-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+</style>
 <main id="site-main">
   <section class="merchandise-section">
     <div class="product-container">
@@ -181,6 +264,7 @@
         <div class="product-info">
           <h2 class="product-title">Barbenhiemer T-Shirt</h2>
           <p class="product-price">$2500</p>
+           <button class="buy-now-btn" onclick="openForm()">Buy Now</button>
         </div>
       </div>
 
@@ -201,6 +285,7 @@
         <div class="product-info">
           <h2 class="product-title">Physics Hoodie</h2>
           <p class="product-price">$45.00</p>
+           <button class="buy-now-btn" onclick="openForm()">Buy Now</button>
         </div>
       </div>
 
@@ -246,169 +331,110 @@
     </div>
 
     <button class="buy-all-button">Explore All Products</button>
-  </section>
-</main>
-
-<script>
-function showSlide(button, index) {
-  const slider = button.closest('.image-slider');
-  const slides = slider.querySelectorAll('.slide');
-  const dots = slider.querySelectorAll('.slider-dot');
-
-  // Remove active class from all slides and dots
-  slides.forEach(slide => slide.classList.remove('active'));
-  dots.forEach(dot => dot.classList.remove('active'));
-
-  // Add active class to selected slide and dot
-  slides[index].classList.add('active');
-  button.classList.add('active');
-}
-</script>
-<style>
-/* Add to Cart Styles */
-.cart-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-.quantity-selector {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.quantity-btn {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.quantity-btn:hover {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.quantity-input {
-  width: 40px;
-  text-align: center;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 5px;
-  padding: 5px;
-}
-
-.add-to-cart {
-  background: #00ff88;
-  color: #000;
-  border: none;
-  padding: 8px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: transform 0.3s ease;
-}
-
-.add-to-cart:hover {
-  transform: scale(1.05);
-}
-
-.cart-counter {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #00ff88;
-  color: #000;
-  padding: 8px 15px;
-  border-radius: 20px;
-  font-weight: bold;
-  z-index: 1000;
-}
-</style>
-
-<!-- Add cart counter at top right -->
-<div class="cart-counter" id="cartCounter">0 items</div>
-
-<script>
-// Cart functionality
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function updateCartCounter() {
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById('cartCounter').textContent = `${totalItems} items`;
-}
-
-function addToCart(productName, price, quantity) {
-  const existingItem = cart.find(item => item.name === productName);
-  
-  if(existingItem) {
-    existingItem.quantity += quantity;
-  } else {
-    cart.push({ name: productName, price: price, quantity: quantity });
-  }
-  
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartCounter();
-}
-
-function checkout() {
-  // Replace with your Google Form ID and entry IDs
-  const formId = 'YOUR_GOOGLE_FORM_ID';
-  const nameEntry = 'entry.123456789'; // Replace with actual entry ID for name
-  const emailEntry = 'entry.987654321'; // Replace with actual entry ID for email
-  const orderEntry = 'entry.112233445'; // Replace with actual entry ID for order
-  
-  // Create order summary
-  const orderSummary = cart.map(item => 
-    `${item.name} (Qty: ${item.quantity}) - $${item.price * item.quantity}`
-  ).join('\n');
-
-  // Create pre-filled URL
-  const baseURL = `https://docs.google.com/forms/d/e/${formId}/viewform?`;
-  const params = new URLSearchParams({
-    [nameEntry]: '{{NAME}}', // Google Forms will prompt user to fill
-    [emailEntry]: '{{EMAIL}}',
-    [orderEntry]: orderSummary
-  });
-
-  window.location.href = baseURL + params.toString();
-}
-
-// Initialize cart counter
-updateCartCounter();
-</script>
-
-<!-- Modified Product Card -->
-<div class="product-card">
-  <div class="image-slider">
-    <!-- ... existing slider code ... -->
-  </div>
-  <div class="product-info">
-    <h2 class="product-title">Quantum T-Shirt</h2>
-    <p class="product-price">$25.00</p>
-    <div class="cart-wrapper">
-      <div class="quantity-selector">
-        <button class="quantity-btn" onclick="this.parentNode.querySelector('input').stepDown()">-</button>
-        <input type="number" class="quantity-input" value="1" min="1">
-        <button class="quantity-btn" onclick="this.parentNode.querySelector('input').stepUp()">+</button>
+     <div id="orderModal" class="form-modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeForm()">&times;</span>
+    <form class="order-form" id="orderForm" action="YOUR_GOOGLE_FORM_URL" method="POST">
+      <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" name="entry.123456789" required>
       </div>
-      <button class="add-to-cart" 
-              onclick="addToCart('Quantum T-Shirt', 25, parseInt(this.previousElementSibling.querySelector('input').value))">
-        Add to Cart
-      </button>
-    </div>
+
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" name="entry.987654321" required>
+      </div>
+
+      <div class="form-group">
+        <label>T-Shirt Size:</label>
+        <select name="entry.size" required>
+          <option value="XS">XS</option>
+          <option value="S">S</option>
+          <option value="M">M</option>
+          <option value="L">L</option>
+          <option value="XL">XL</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Quantity:</label>
+        <input type="number" name="entry.quantity" min="1" required>
+      </div>
+
+      <div class="form-group">
+        <label>Amount Paid (₹):</label>
+        <input type="number" name="entry.amount" step="0.01" required>
+      </div>
+
+      <div class="form-group">
+        <label>Payment Screenshot:</label>
+        <input type="file" name="entry.fileUpload" accept="image/*" required>
+      </div>
+
+      <button type="submit" class="buy-now-btn">Confirm Order</button>
+    </form>
   </div>
 </div>
 
-<!-- Checkout Button -->
-<button class="buy-all-button" onclick="checkout()">Proceed to Checkout</button>
+<script>
+// Modal Functions
+function openForm() {
+  document.getElementById("orderModal").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("orderModal").style.display = "none";
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('orderModal');
+  if (event.target === modal) {
+    closeForm();
+  }
+}
+
+// Close with ESC key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeForm();
+});
+
+// Form Submission Handling
+document.getElementById('orderForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  
+  try {
+    submitBtn.innerHTML = 'Processing...';
+    submitBtn.disabled = true;
+
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form)
+    });
+
+    if (response.ok) {
+      alert('Order placed successfully!');
+      form.reset();
+      closeForm();
+    } else {
+      throw new Error('Submission failed');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Error submitting form. Please try again.');
+  } finally {
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
+  }
+});
+</script>
+  </section>
 </main>
+
          </section>
          <footer id="footer">
                <div class="padding1">
