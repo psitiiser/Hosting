@@ -13,6 +13,121 @@
       <script type="text/javascript" async
          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js">
       </script>
+      <style>
+        /* Popup Styles */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+        }
+
+        .popup-content {
+            background-color: #111; /* Dark background for content */
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+            color: #fff;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Form Styling */
+        .order-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #eee;
+        }
+
+        .order-form input[type="text"],
+        .order-form input[type="email"],
+        .order-form select,
+        .order-form input[type="number"],
+        .order-form input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .order-form select {
+            appearance: none; /* Remove default arrow in some browsers */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 100%;
+            background-position-y: 5px;
+        }
+
+        .order-form button[type="submit"] {
+            background-color: #00ff88;
+            color: black;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .order-form button[type="submit"]:hover {
+            background-color: #00cc66;
+        }
+
+        .qr-code-image {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+        }
+        .buy-now-button {
+            display: block;
+            width: fit-content; /* Adjust width as needed */
+            padding: 10px 20px;
+            background-color: #00ff88; /* Green */
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 10px auto; /* Center the button */
+        }
+
+        .buy-now-button:hover {
+            background-color: black; /* Black on hover */
+            color: #00ff88; /* Green text on hover */
+            border: 1px solid #00ff88;
+        }
+
+
+      </style>
    </head>
    <body>
       <div class="container">
@@ -35,224 +150,281 @@
             </header>
          </div>
          <script src="0de295a0142760d57058.js"></script>
-    <!-- We'll add CSS here -->
-         <style>
-body {
-    background: #0a0a0a;
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
+<style>
+/* Updated Merchandise Section */
+.merchandise-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.open-btn {
-    background: #1e90ff;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 25px;
-    font-size: 18px;
-    cursor: pointer;
-    margin: 20px;
-    transition: all 0.3s;
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  padding: 2rem 0;
 }
 
-.open-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #1e90ff;
+.product-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.8);
+.image-slider {
+  position: relative;
+  height: 300px;
+  margin-bottom: 1rem;
 }
 
-.modal-content {
-    background: #111;
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.slider-nav {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.slider-dot.active {
+  background: #00ff88;
+}
+
+.product-info {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.product-price {
+  color: #00ff88;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.buy-all-button {
+  display: block;
+  width: 220px;
+  margin: 3rem auto;
+  padding: 1.2rem 2.5rem;
+  background: linear-gradient(45deg, #00ff88, #00ccff);
+  color: #000;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .product-container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .image-slider {
+    height: 250px;
+  }
+
+  .buy-all-button {
     width: 90%;
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 25px;
-    border-radius: 15px;
-    position: relative;
-}
-
-.close {
-    position: absolute;
-    right: 25px;
-    top: 15px;
-    font-size: 30px;
-    cursor: pointer;
-    color: #ff4444;
-}
-
-.form-group {
-    margin: 15px 0;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #1e90ff;
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    background: #222;
-    border: 1px solid #333;
-    color: white;
-    border-radius: 8px;
-}
-
-.qr-section {
-    text-align: center;
-    margin: 20px 0;
-    padding: 15px;
-    background: #1a1a1a;
-    border-radius: 10px;
-}
-
-.qr-code {
-    max-width: 200px;
-    margin: 10px auto;
-    border: 2px solid #1e90ff;
-    border-radius: 10px;
-}
-
-.upload-label {
-    display: block;
-    background: #1a1a1a;
-    padding: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.upload-label:hover {
-    background: #252525;
-}
-
-.submit-btn {
-    background: linear-gradient(135deg, #1e90ff, #0066cc);
-    color: white;
-    padding: 15px;
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
+    padding: 1rem 2rem;
+  }
 }
 </style>
-</head>
-<body>
 
-<!-- Trigger Button -->
-<button class="open-btn">Order Now</button>
+<main id="site-main">
+  <section class="merchandise-section">
+    <div class="product-container">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="image-slider">
+          <div class="slide active">
+            <img src="barb1.png" class="product-image" alt="Product 1">
+          </div>
+          <div class="slide">
+            <img src="barb2.png" class="product-image" alt="Product 1 Back">
+          </div>
+          <div class="slider-nav">
+            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h2 class="product-title">Barbenhiemer T-Shirt</h2>
+          <p class="product-price">$2500</p>
+          <button class="buy-now-button" data-product-name="Barbenhiemer T-Shirt" data-product-price="2500">Buy Now</button>
+        </div>
+      </div>
 
-<!-- The Modal -->
-<div class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <form id="orderForm">
-           <div class="form-group">
-    <label>Full Name:</label>
-    <input type="text" name="entry.1042560714" required>
-</div>
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="image-slider">
+          <div class="slide active">
+            <img src="b1.png" class="product-image" alt="Product 2">
+          </div>
+          <div class="slide">
+            <img src="b2.png" class="product-image" alt="Product 2 Back">
+          </div>
+          <div class="slider-nav">
+            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h2 class="product-title">Physics Hoodie</h2>
+          <p class="product-price">$45.00</p>
+          <button class="buy-now-button" data-product-name="Physics Hoodie" data-product-price="45.00">Buy Now</button>
+        </div>
+      </div>
 
-<div class="form-group">
-    <label>Email:</label>
-    <input type="email" name="entry.1042560714" required>
-</div>
+        <div class="product-card">
+        <div class="image-slider">
+          <div class="slide active">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+2-A" class="product-image" alt="Product 2">
+          </div>
+          <div class="slide">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+2-B" class="product-image" alt="Product 2 Back">
+          </div>
+          <div class="slider-nav">
+            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h2 class="product-title">Physics Hoodie</h2>
+          <p class="product-price">$45.00</p>
+          <button class="buy-now-button" data-product-name="Physics Hoodie" data-product-price="45.00">Buy Now</button>
+        </div>
+      </div>
 
-<div class="form-group">
-    <label>T-Shirt Size:</label>
-    <select name="entry.1042560714" required>
-        <option value="">Select Size</option>
-        <option value="XS">XS</option>
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-        <option value="XL">XL</option>
-    </select>
-</div>
+        <div class="product-card">
+        <div class="image-slider">
+          <div class="slide active">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+2-A" class="product-image" alt="Product 2">
+          </div>
+          <div class="slide">
+            <img src="https://via.placeholder.com/300x300/000000/ffffff?text=Product+2-B" class="product-image" alt="Product 2 Back">
+          </div>
+          <div class="slider-nav">
+            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h2 class="product-title">Physics Hoodie</h2>
+          <p class="product-price">$45.00</p>
+          <button class="buy-now-button" data-product-name="Physics Hoodie" data-product-price="45.00">Buy Now</button>
+        </div>
+      </div>
 
-<div class="form-group">
-    <label>Quantity:</label>
-    <input type="number" name="entry.1969728799" min="1" required>
-</div>
-
-<div class="form-group">
-    <label>Amount Paid (₹):</label>
-    <input type="number" name="entry.1013335983" step="0.01" required>
-</div>
-
-<div class="qr-section">
-    <p>Scan to Pay</p>
-    <img src="b1.png" class="qr-code" alt="UPI QR Code">
-</div>
-
-<div class="form-group">
-    <label class="upload-label">
-        Upload Payment Screenshot
-        <input type="file" name="entry.1445399704" hidden required>
-    </label>
-</div>
-
-<button type="submit" class="submit-btn">Place Order</button>
-            <!-- Form fields will go here -->
-        </form>
+      <!-- Add more products following the same structure -->
     </div>
-</div>
+
+    <button class="buy-all-button">Explore All Products</button>
+  </section>
+</main>
+
 <script>
-// Modal Controls
-const modal = document.querySelector('.modal');
-const openBtn = document.querySelector('.open-btn');
-const closeBtn = document.querySelector('.close');
+function showSlide(button, index) {
+  const slider = button.closest('.image-slider');
+  const slides = slider.querySelectorAll('.slide');
+  const dots = slider.querySelectorAll('.slider-dot');
 
-openBtn.addEventListener('click', () => {
-    modal.style.display = 'block';
-});
+  // Remove active class from all slides and dots
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
 
-closeBtn.addEventListener('click', () => {
-    modal.style.display = 'none';
-});
-
-window.onclick = (e) => {
-    if(e.target === modal) {
-        modal.style.display = 'none';
-    }
+  // Add active class to selected slide and dot
+  slides[index].classList.add('active');
+  button.classList.add('active');
 }
 
-// Form Submission
-document.getElementById('orderForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Add your Google Form URL
-    const formURL = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdDbFAC16Va8NgOLImoasOkhAyYnehVnql8ruBjLY6G5x2xzw/formResponse';
-    
-    // Submit form data
-    fetch(formURL, {
-        method: 'POST',
-        body: new FormData(e.target)
-    })
-    .then(response => {
-        alert('Order placed successfully!');
-        modal.style.display = 'none';
-    })
-    .catch(error => {
-        alert('Error submitting form. Please try again.');
-    });
+// Get the popup form element
+var orderFormPopup = document.getElementById("orderFormPopup");
+
+// Get all "Buy Now" buttons
+var buyNowButtons = document.querySelectorAll(".buy-now-button");
+
+// Get the close button
+var closeButton = document.querySelector(".close-button");
+
+// Get the product name and price fields in the form
+var productNameField = document.getElementById("productName");
+var productPriceField = document.getElementById("productPrice");
+var moneyToBePaidField = document.getElementById("moneyToBePaid");
+
+
+// When the user clicks a "Buy Now" button
+buyNowButtons.forEach(function(button) {
+    button.onclick = function(event) {
+        event.preventDefault(); // Prevent default button behavior if it's in a form
+        var productName = this.dataset.productName;
+        var productPrice = this.dataset.productPrice;
+
+        productNameField.value = productName;
+        productPriceField.value = productPrice;
+        moneyToBePaidField.value = productPrice; // Set money to be paid to product price initially
+
+        orderFormPopup.style.display = "block";
+    }
 });
+
+
+// When the user clicks on the close button (x), close the popup
+closeButton.onclick = function() {
+    orderFormPopup.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the popup, close it
+window.onclick = function(event) {
+    if (event.target == orderFormPopup) {
+        orderFormPopup.style.display = "none";
+    }
+}
 </script>
-<!-- We'll add JavaScript here -->
-</body>
-</html>
-</main>
+
          </section>
          <footer id="footer">
                <div class="padding1">
@@ -313,5 +485,51 @@ document.getElementById('orderForm').addEventListener('submit', (e) => {
          </main>
       </div>
       <canvas class="webgl"></canvas>
+
+      <!-- The Popup Form -->
+      <div id="orderFormPopup" class="popup">
+        <div class="popup-content">
+          <span class="close-button">×</span>
+          <h2>Order Form</h2>
+          <form id="orderForm" class="order-form" action="YOUR_GOOGLE_FORM_URL_HERE" method="POST" target="hidden_iframe" enctype="multipart/form-data">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="entry.YOUR_NAME_ID" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="entry.YOUR_EMAIL_ID" required>
+
+            <label for="size">T-shirt Size:</label>
+            <select id="size" name="entry.YOUR_SIZE_ID">
+              <option value="xs">XS</option>
+              <option value="s">S</option>
+              <option value="m">M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="entry.YOUR_QUANTITY_ID" value="1" min="1">
+
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="entry.YOUR_PRODUCT_NAME_ID" value="" readonly>
+
+            <label for="productPrice">Product Price:</label>
+            <input type="text" id="productPrice" name="entry.YOUR_PRODUCT_PRICE_ID" value="" readonly>
+
+            <label for="moneyToBePaid">Money to be Paid:</label>
+            <input type="text" id="moneyToBePaid" name="entry.YOUR_MONEY_TO_BE_PAID_ID" value="" readonly>
+
+            <label>UPI QR Code:</label>
+            <img src="YOUR_QR_CODE_IMAGE_URL_HERE" alt="UPI QR Code" class="qr-code-image">
+
+            <label for="paymentScreenshot">Upload Payment Screenshot:</label>
+            <input type="file" id="paymentScreenshot" name="entry.YOUR_PAYMENT_SCREENSHOT_ID" accept="image/*" required>
+
+            <button type="submit">Submit Order</button>
+          </form>
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+        </div>
+      </div>
+
    </body>
 </html>
