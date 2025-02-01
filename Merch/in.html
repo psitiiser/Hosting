@@ -96,32 +96,54 @@
   z-index: 2;
 }
 
+
 .slider-dot {
   width: 30px;
-  height: 30px;
+  height: 15px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  position: relative; /* Required for positioning the arrow */
+  position: relative; /* Required for positioning the arrows */
 }
 
+/* Left arrow */
 .slider-dot::before {
-  content: ''; /* Required for pseudo-elements */
+  content: '';
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg); /* Center and rotate the arrow */
-  width: 8px; /* Adjust the size of the arrow */
+  left: 30%; /* Adjust the position of the left arrow */
+  transform: translate(-50%, -50%) rotate(-45deg); /* Rotate for left arrow */
+  width: 8px;
   height: 8px;
-  border-right: 2px solid white; /* Create the arrow shape */
+  border-left: 2px solid white; /* Create the left arrow shape */
   border-bottom: 2px solid white;
-  opacity: 0.8; /* Adjust the opacity of the arrow */
+  opacity: 0.8;
 }
 
+/* Right arrow */
+.slider-dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 70%; /* Adjust the position of the right arrow */
+  transform: translate(-50%, -50%) rotate(135deg); /* Rotate for right arrow */
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid white; /* Create the right arrow shape */
+  border-top: 2px solid white;
+  opacity: 0.8;
+}
+
+/* Active state styling */
 .slider-dot.active {
-  background: #00ff88;
+  background: rgba(255, 255, 255, 1); /* Change background for active state */
+}
+
+.slider-dot.active::before,
+.slider-dot.active::after {
+  opacity: 1; /* Make arrows more visible in active state */
 }
 
 .product-info {
@@ -292,7 +314,7 @@
           </div>
           <div class="slider-nav">
             <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
-            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>a
           </div>
         </div>
         <div class="product-info">
