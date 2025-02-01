@@ -86,61 +86,33 @@
   border-radius: 10px;
 }
 
-.slider-nav {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 2;
-}
-.slider-dot {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
-  position: relative; /* Required for positioning the arrows */
-}
+        /* Slider Navigation Arrows */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            color: #333;
+            transition: background 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
 
+        .slider-arrow:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
 
+        .prev {
+            left: 15px;
+        }
 
-/* Left arrow */
-.slider-dot::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 30%; /* Adjust the position of the left arrow */
-  transform: translate(-50%, -50%) rotate(85deg); /* Rotate for left arrow */
-  width: 8px;
-  height: 8px;
-  border-left: 2px solid white; /* Create the left arrow shape */
-  border-bottom: 2px solid white;
-  opacity: 0.8;
-}
-
-/* Right arrow */
-.slider-dot::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 70%; /* Adjust the position of the right arrow */
-  transform: translate(-50%, -50%) rotate(15deg); /* Rotate for right arrow */
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid white; /* Create the right arrow shape */
-  border-top: 2px solid white;
-  opacity: 0.8;
-}
-
-/* Active state styling */
-.slider-dot.active {
-  background: rgba(255, 255, 255, 1); /* Change background for active state */
-  opacity: 1; /* Make arrows more visible in active state */
-}
+        .next {
+            right: 15px;
+        }
 
 .product-info {
   padding: 1rem 0;
@@ -270,8 +242,9 @@
             <img src="https://i.ibb.co/HfLz85L0/Green-and-White-Luxury-Hotel-with-Circle-Frame-Trifold-Brochure.png" class="product-image" alt="Product 2 Back">
           </div>
           <div class="slider-nav">
-            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
-            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+            !-- Navigation Arrows -->
+            <button class="slider-arrow prev" onclick="changeSlide(-1)">❮</button>
+            <button class="slider-arrow next" onclick="changeSlide(1)">❯</button>
           </div>
         </div>
         <div class="product-info">
