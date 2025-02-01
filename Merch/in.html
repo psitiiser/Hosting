@@ -95,7 +95,16 @@
   gap: 8px;
   z-index: 2;
 }
-
+.slider-dot {
+  width: 30px;
+  height: 15px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  position: relative; /* Required for positioning the arrows */
+}
 
 
 
@@ -105,7 +114,7 @@
   position: absolute;
   top: 50%;
   left: 30%; /* Adjust the position of the left arrow */
-  transform: translate(-50%, -50%) rotate(-45deg); /* Rotate for left arrow */
+  transform: translate(-50%, -50%) rotate(85deg); /* Rotate for left arrow */
   width: 8px;
   height: 8px;
   border-left: 2px solid white; /* Create the left arrow shape */
