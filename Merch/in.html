@@ -110,18 +110,28 @@
   background: #00ff88;
 }
 .slider-arrow {
-   position: absolute;
-   top: 50%;
-   transform: translateY(-50%);
-   background: transparent;
-   border: green;
-   cursor: pointer;
-   padding: 10px;
-   border-radius: 40%;
-   font-size: 1.3rem;
-   color: #333;
-   transition: background 0.3s ease;
-   backdrop-filter: blur(4px);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.5); /* Corrected opacity syntax */
+    border: 1px solid green; /* Added proper border syntax */
+    cursor: pointer;
+    padding: 8px; /* Reduced padding to make the button smaller */
+    border-radius: 50%; /* Changed to perfect circle */
+    font-size: 1.1rem; /* Reduced font size */
+    color: #333;
+    transition: background 0.3s ease;
+    backdrop-filter: blur(4px);
+    width: 30px; /* Added fixed width */
+    height: 30px; /* Added fixed height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Added subtle shadow */
+}
+
+.slider-arrow:hover {
+    background: rgba(255, 255, 255, 0.8); /* Improved hover effect */
 }
 
 .slider-arrow:hover {
