@@ -98,12 +98,26 @@
 
 .slider-dot {
   width: 30px;
-  height: 15px;
+  height: 30px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
+  position: relative; /* Required for positioning the arrow */
+}
+
+.slider-dot::before {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg); /* Center and rotate the arrow */
+  width: 8px; /* Adjust the size of the arrow */
+  height: 8px;
+  border-right: 2px solid white; /* Create the arrow shape */
+  border-bottom: 2px solid white;
+  opacity: 0.8; /* Adjust the opacity of the arrow */
 }
 
 .slider-dot.active {
