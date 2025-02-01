@@ -109,32 +109,32 @@
 .slider-dot.active {
   background: #00ff88;
 }
-        .slider-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            color: #333;
-            transition: background 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
+.slider-arrow {
+   position: absolute;
+   top: 50%;
+   transform: translateY(-50%);
+   background: transparent;
+   border: none;
+   cursor: pointer;
+   padding: 10px;
+   border-radius: 50%;
+   font-size: 1.5rem;
+   color: #333;
+   transition: background 0.3s ease;
+   backdrop-filter: blur(5px);
+}
 
-        .slider-arrow:hover {
-            background: rgba(255, 255, 255, 0.9);
-        }
+.slider-arrow:hover {
+   background: rgba(255, 255, 255, 0.9);
+}
 
-        .prev {
-            left: 15px;
-        }
+.prev {
+   left: 15px;
+}
 
-        .next {
-            right: 15px;
-        }
+.next {
+   right: 15px;
+}
 
 .product-info {
   padding: 1rem 0;
@@ -221,10 +221,11 @@
             <img src="barb2.png" class="product-image" alt="Product 1 Back">
           </div>
           <div class="slider-nav">
-            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
-            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
             <button class="slider-arrow prev" onclick="showSlide(this, 0)">❮</button>
             <button class="slider-arrow next" onclick="showSlide(this, 1)">❯</button>
+            <button class="slider-dot active" onclick="showSlide(this, 0)"></button>
+            <button class="slider-dot" onclick="showSlide(this, 1)"></button>
+           
           </div>
         </div>
         <div class="product-info">
