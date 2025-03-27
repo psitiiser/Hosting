@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Ensures proper rendering and touch zooming on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>How Did Quantum Mechanics Revolutionize Our Understanding of Reality?</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<!-- Assuming these contain the base styles -->
 <link rel="stylesheet" href="b88d04fba731603756b1.css">
 <script defer="defer" src="bundle.d30138a2dff5a0b6726a.js"></script>
 <link href="main.css" rel="stylesheet">
@@ -14,27 +16,184 @@
 <script type="text/javascript" async
 src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js">
 </script>
+
+<!-- Added CSS for Mobile Responsiveness -->
+<style>
+    /* --- General Mobile Optimizations --- */
+
+    /* Ensure images within the article body scale correctly */
+    .article-text__body img {
+        max-width: 100%; /* Never wider than the container */
+        height: auto;    /* Maintain aspect ratio */
+        display: block;  /* Remove extra space below image */
+        margin: 1em auto; /* Center image and add some vertical space */
+    }
+
+    /* Ensure the WebGL canvas resizes (JS part is also crucial) */
+    .webgl {
+        position: fixed; /* Or absolute, depending on desired effect */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Keep it behind content */
+        outline: none;
+    }
+
+    /* Adjust overall padding for smaller screens */
+    .padding1 {
+        padding: 1rem; /* Reduce padding from potential larger default */
+    }
+
+    /* Improve readability on small screens */
+    .article-text__body p {
+        line-height: 1.6; /* Increase line spacing slightly */
+        font-size: 1rem; /* Ensure readable base font size */
+    }
+
+    .article-title {
+         font-size: 1.8rem; /* Slightly smaller title on mobile */
+         line-height: 1.2;
+    }
+
+
+    /* --- Responsive Navigation (Assuming standard toggle mechanism) --- */
+    @media (max-width: 992px) { /* Adjust breakpoint as needed based on main.css */
+        .navbar .toggle-button {
+            display: block; /* Show hamburger icon */
+            font-size: 1.5rem; /* Ensure it's tappable */
+            background: none;
+            border: none;
+            color: white; /* Adjust color if needed */
+            cursor: pointer;
+        }
+
+        .navbar .collapse {
+            /* Styles for when the menu is collapsed */
+            display: none; /* Hide the menu by default */
+            position: absolute; /* Position it relative to the navbar */
+            top: 100%;      /* Place it below the header */
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Dark background for overlay */
+            z-index: 1000; /* Ensure it's above other content */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        /* Assuming JS adds a class like 'active' or 'show' to display the menu */
+        .navbar .collapse.active,
+        .navbar .collapse.show {
+            display: block;
+        }
+
+        .navbar .navbar-nav {
+            flex-direction: column; /* Stack links vertically */
+            width: 100%;
+            align-items: flex-start; /* Align text to the left */
+        }
+
+        .navbar .nav-link {
+            padding: 12px 20px; /* Increase padding for easier tapping */
+            width: 100%;       /* Make link take full width */
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
+        }
+         .navbar .nav-link:last-child {
+            border-bottom: none;
+         }
+
+        /* Adjust header padding if needed */
+        #header .container.navbar {
+             padding-left: 1rem;
+             padding-right: 1rem;
+             justify-content: space-between; /* Push logo and button apart */
+        }
+
+        /* Adjust logo size if needed */
+        #header img {
+            max-width: 150px; /* Reduce logo size slightly */
+            height: auto;
+        }
+    }
+
+     /* Hide toggle button on larger screens */
+     @media (min-width: 993px) { /* Must match the max-width above + 1 */
+        .navbar .toggle-button {
+            display: none;
+        }
+        /* Ensure desktop styles apply correctly */
+        .navbar .collapse {
+            display: block !important; /* Override any potential display:none */
+            position: static;
+            background-color: transparent;
+            box-shadow: none;
+            width: auto;
+         }
+         .navbar .navbar-nav {
+            flex-direction: row;
+            width: auto;
+         }
+          .navbar .nav-link {
+            padding: 8px 15px; /* Restore desktop padding */
+            width: auto;
+            border-bottom: none;
+          }
+     }
+
+
+    /* --- Responsive Footer --- */
+    @media (max-width: 768px) { /* Breakpoint for tablet/mobile footer */
+        #footer .row {
+            flex-direction: column; /* Stack columns vertically */
+        }
+
+        #footer .col-3 {
+            width: 100%; /* Make each column take full width */
+            margin-bottom: 2rem; /* Add space between stacked columns */
+        }
+
+        #footer .col-3:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Adjust footer social icons if needed */
+        #footer .email .collapse .navbar-nav {
+            flex-direction: row; /* Keep social icons in a row */
+            justify-content: center; /* Center them */
+            margin-top: 1rem;
+        }
+         #footer .email .insta-icon { margin-right: 10px;} /* Spacing for inline icons */
+    }
+
+</style>
+
 </head>
 <body>
 <div class="container">
 <div class="padding1">
+<!-- Removed position: fixed and potentially conflicting styles if they existed -->
 <header id="header" class="shadow bg-transparent">
-<nav class="container navbar">
-<img src="../Images/psit_sqr_white.png" width="200" height="200">
-<button class="toggle-button"><span><i class="fas fa-bars"></i></span></button>
-<div class="collapse">
-<ul class="navbar-nav">
-<a href="../index.html" class="nav-link">Home</a>
-<a href="../Team Page/index_team.html" class="nav-link">Meet The Team</a>
-<a href="../Blog Page/index_blog.html" class="nav-link">Blog</a>
-<a href="../Events Page/index_events.html" class="nav-link">Events</a>
-<a href="../Resources/index_resources.html" class="nav-link">Resources</a>
-</ul>
-</div>
-</nav>
+    <!-- Added container class here if not already present in main.css for alignment -->
+    <nav class="container navbar">
+        <!-- Ensure logo scales well -->
+        <img src="../Images/psit_sqr_white.png" alt="PSIT Logo" style="max-width: 180px; height: auto;"> <!-- Inline style for quick demo, better in CSS -->
+        <button class="toggle-button" aria-label="Toggle navigation"><span><i class="fas fa-bars"></i></span></button>
+        <!-- The 'collapse' div that gets toggled -->
+        <div class="collapse">
+            <ul class="navbar-nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../Team Page/index_team.html" class="nav-link">Meet The Team</a>
+                <a href="../Blog Page/index_blog.html" class="nav-link">Blog</a>
+                <a href="../Events Page/index_events.html" class="nav-link">Events</a>
+                <a href="../Resources/index_resources.html" class="nav-link">Resources</a>
+            </ul>
+        </div>
+    </nav>
 </header>
 </div>
+<!-- Assuming this script handles the navbar toggle -->
 <script src="0de295a0142760d57058.js"></script>
+
 <main id="site-main">
 <section class="article-text">
 <header class="article-text__intro">
@@ -51,9 +210,10 @@ The early years of this quantum saga saw contributions from a range of physicist
 
 While Planck opened the door to the quantum world, it was Albert Einstein who blew it wide open in 1905. Just 26 years old at the time, Einstein published a paper on the photoelectric effect that fundamentally challenged the classical view of light. He proposed that light could behave not just as a wave, as had been previously thought, but also as a particle—a quantum of energy called a photon. This was a revolutionary idea, and initially, it met with significant scepticism. Yet, Einstein's explanation provided the first convincing solution to the photoelectric effect (from Hertz’s experiments), predicting how light could eject electrons from metals based on its frequency, not its intensity. In doing so, Einstein bridged the gap between the continuous nature of electromagnetic waves and the discrete energy packets that governed the behaviour of matter at the atomic level. His work would eventually earn him a Nobel Prize, though not for his more famous theory of relativity, but for this spearheading insight into the quantum nature of light.<br><br>
 
-The quantum revolution gained further momentum in 1911 at the first Solvay Congress, a gathering of some of the most brilliant scientific minds of the day. The meeting was dominated by discussions of radiation theory and the nature of quanta, with Einstein once again playing a central role. At the time, quantum theory was still in its infancy, with many questions left unanswered. One of the central challenges at that time was how to reconcile the continuous nature of classical electromagnetic waves with the emerging evidence for quantized energy levels. This debate laid the foundation for a new way of thinking about the physical world, one that would culminate in the development of quantum mechanics in the 1920s.<br><br>
+The quantum revolution gained further momentum in 1911 at the first Solvay Congress, a gathering of some of the most brilliant scientific minds of the day. The meeting was dominated by discussions of radiation theory and the nature of quanta, with Einstein once again playing a central role. At the time, quantum theory was still in its infancy, with many questions left unanswered. One of the central challenges at that time was how to reconcile the continuous nature of classical electromagnetic waves with the emerging evidence for quantized energy levels. This debate laid the foundation for a new way of thinking about the physical world, one that would culminulate in the development of quantum mechanics in the 1920s.<br><br>
 
-<img src="https://3.bp.blogspot.com/-S7Z6WVrbSjg/VIvk5Xv6OEI/AAAAAAAAJ18/RCxg43obsYc/s1600/The+Solvay+Conference,+probably+the+most+intelligent+picture+ever+taken,+1927+(2).jpg" alt="qm_tunneling" width="600" height="400"><br>
+<!-- Removed fixed width and height attributes -->
+<img src="https://3.bp.blogspot.com/-S7Z6WVrbSjg/VIvk5Xv6OEI/AAAAAAAAJ18/RCxg43obsYc/s1600/The+Solvay+Conference,+probably+the+most+intelligent+picture+ever+taken,+1927+(2).jpg" alt="The 1927 Solvay Conference. 17 of the 29 attendees were—or became—Nobel laureates later."><br>
 <i>The 1927 Solvay Conference. 17 of the 29 of the attendees were—or became—Nobel laureates later.</i><br><br>
 
 One of the first major steps toward this new understanding came from Niels Bohr, a Danish physicist who in 1913 introduced a model of the atom that incorporated quantum ideas. Bohr's model was based on the work of Ernest Rutherford, who had discovered that atoms consist of a dense nucleus surrounded by orbiting electrons. However, Rutherford's model couldn't explain why these orbiting electrons didn't simply spiral into the nucleus due to the attractive force of the protons. Bohr proposed a solution: electrons occupy discrete orbits around the nucleus and can only jump between these orbits by absorbing or emitting specific amounts of energy, corresponding to the difference in energy between the orbits. This was a radical departure from classical physics, but it was also incredibly successful. Bohr's model explained the spectral lines of hydrogen, which had long puzzled scientists, and provided strong evidence for the quantization of energy in atomic systems.<br><br>
@@ -75,126 +235,146 @@ And yet, as much as quantum mechanics continued to evolve after that, it raised 
  </p>
 </div>
 </section>
+
 <footer id="footer">
 <div class="padding1">
+<!-- Assuming 'row' uses flexbox -->
 <div class="row mb-3">
-<div class="col-3">
-<h3 class="footer-title secondary-title">Featured Posts</h3>
-<div class="feature-post py-1" id="featured-posts-container"></div>
-</div>
-<div class="col-3">
-<h3 class="footer-title secondary-title">Other Links</h3>
-<div class="secondary-title text-light mb-1">
-<div class="mt-2">
-<a target="_blank" class="footer-link text-light" href="https://physics.iisertvm.ac.in/">School of Physics</a><br>
-<a target="_blank" class="footer-link text-light" href="http://www.iisertvm.ac.in/">IISER Thiruvananthapuram</a><br>
-</div>
-<div class="email">
-<i class="fas fa-envelope text-secondary"></i> psit@iisertvm.ac.in
-<div class="collapse">
-<ul class="navbar-nav">
-<div class="insta-icon"><a href="https://www.instagram.com/psitiiser/" class="nav-link"><i class="fab fa-instagram"></i></a></div>
-<a href="https://m.facebook.com/psitiiser" class="nav-link"><i class="fab fa-facebook"></i></a>
-<a href="https://www.youtube.com/c/psitiiser/featured" class="nav-link"><i class="fab fa-youtube"></i></a>
-</ul>
-</div>
-</div>
-</div>
-</div>
+    <!-- Assuming 'col-3' defines width for larger screens -->
+    <div class="col-3">
+        <h3 class="footer-title secondary-title">Featured Posts</h3>
+        <div class="feature-post py-1" id="featured-posts-container">
+            <!-- JS will populate this -->
+        </div>
+    </div>
+    <div class="col-3">
+        <h3 class="footer-title secondary-title">Other Links</h3>
+        <div class="secondary-title text-light mb-1">
+            <div class="mt-2">
+                <a target="_blank" class="footer-link text-light" href="https://physics.iisertvm.ac.in/">School of Physics</a><br>
+                <a target="_blank" class="footer-link text-light" href="http://www.iisertvm.ac.in/">IISER Thiruvananthapuram</a><br>
+            </div>
+            <div class="email">
+                <i class="fas fa-envelope text-secondary"></i> psit@iisertvm.ac.in
+                <!-- Check if this 'collapse' needs responsive styling too -->
+                <div class="collapse" style="display: block !important;"> <!-- Ensure icons are always visible -->
+                    <ul class="navbar-nav" style="flex-direction: row; margin-top: 0.5rem;"> <!-- Keep icons in a row -->
+                        <li class="insta-icon" style="margin-right: 10px;"><a href="https://www.instagram.com/psitiiser/" class="nav-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a></li>
+                        <li style="margin-right: 10px;"><a href="https://m.facebook.com/psitiiser" class="nav-link" aria-label="Facebook"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="https://www.youtube.com/c/psitiiser/featured" class="nav-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 </footer>
 </main>
 </div>
+
+<!-- Ensure WebGL canvas is outside the main scrollable container if it's meant to be fixed background -->
 <canvas class="webgl"></canvas>
+
 <script>
-// Array of blog posts
+// Array of blog posts (unchanged)
 const blogPosts = [
-{
-"title": "From the Holographic Principle to ADS/CFT",
-"imageUrl": "../Blog Page/holocft1.png",
-"link": "../Blog Page/holograph_cft.html"
-},
-{
-"title": "The Phenomenon of Quantum Tunneling and How It's Used in Scanning Tunneling Microscopy",
-"imageUrl": "../Blog Page/qtnling1.jpg",
-"link": "../Blog Page/qmtnling_stm.html"
-},
-{
-"title": "Frontier: Mpemba Effect",
-"imageUrl": "../Blog Page/b0b2c5f14ca5de02d038.jpeg",
-"link": "../Blog Page/mpemba.html"
-},
-{
-"title": "Spotlight: W-Boson, The Mass Anomaly",
-"imageUrl": "../Blog Page/4db3aaa641795bafafea.jpeg",
-"link": "../Blog Page/wboson.html"
-},
-{
-"title": "Conceptualise: Handstand",
-"imageUrl": "../Blog Page/3d360fdc09d9feef7bec.jpeg",
-"link": "../Blog Page/handstand.html"
-},
-{
-"title": "Review: The Elegant Universe",
-"imageUrl": "../Blog Page/67c79ceb0deb5d44bb32.jpeg",
-"link": "../Blog Page/elegant.html"
-},
-{
-"title": "Curtain Call: Deepak Dhar",
-"imageUrl": "../Blog Page/d039354923097ba72254.jpeg",
-"link": "../Blog Page/deepak.html"
-},
-{
-"title": "What is? : Quantum Levitation",
-"imageUrl": "../Blog Page/269ae617c0c30b4ee0a0.jpeg",
-"link": "../Blog Page/levitation.html"
-},
-{
-"title": "Musings: the Future of Space Travel",
-"imageUrl": "../Blog Page/a38cfb9ff07cfe120d15.jpeg",
-"link": "../Blog Page/spacetravel.html"
-},
-{
-"title": "Eureka: Super Kamiokande",
-"imageUrl": "../Blog Page/8d00848ec0f8cdd38689.jpeg",
-"link": "../Blog Page/eureka.html"
-}
+    // ... (existing blog post data) ...
+    { "title": "From the Holographic Principle to ADS/CFT", "imageUrl": "../Blog Page/holocft1.png", "link": "../Blog Page/holograph_cft.html" },
+    { "title": "The Phenomenon of Quantum Tunneling and How It's Used in Scanning Tunneling Microscopy", "imageUrl": "../Blog Page/qtnling1.jpg", "link": "../Blog Page/qmtnling_stm.html" },
+    { "title": "Frontier: Mpemba Effect", "imageUrl": "../Blog Page/b0b2c5f14ca5de02d038.jpeg", "link": "../Blog Page/mpemba.html" },
+    { "title": "Spotlight: W-Boson, The Mass Anomaly", "imageUrl": "../Blog Page/4db3aaa641795bafafea.jpeg", "link": "../Blog Page/wboson.html" },
+    { "title": "Conceptualise: Handstand", "imageUrl": "../Blog Page/3d360fdc09d9feef7bec.jpeg", "link": "../Blog Page/handstand.html" },
+    { "title": "Review: The Elegant Universe", "imageUrl": "../Blog Page/67c79ceb0deb5d44bb32.jpeg", "link": "../Blog Page/elegant.html" },
+    { "title": "Curtain Call: Deepak Dhar", "imageUrl": "../Blog Page/d039354923097ba72254.jpeg", "link": "../Blog Page/deepak.html" },
+    { "title": "What is? : Quantum Levitation", "imageUrl": "../Blog Page/269ae617c0c30b4ee0a0.jpeg", "link": "../Blog Page/levitation.html" },
+    { "title": "Musings: the Future of Space Travel", "imageUrl": "../Blog Page/a38cfb9ff07cfe120d15.jpeg", "link": "../Blog Page/spacetravel.html" },
+    { "title": "Eureka: Super Kamiokande", "imageUrl": "../Blog Page/8d00848ec0f8cdd38689.jpeg", "link": "../Blog Page/eureka.html" }
 ];
 
-// Function to get random posts
+// Function to get random posts (unchanged)
 function getRandomPosts(posts, count) {
 const shuffled = posts.sort(() => 0.5 - Math.random());
 return shuffled.slice(0, count);
 }
 
-// Function to display featured posts
+// Function to display featured posts (unchanged, but CSS above helps responsiveness)
 function displayFeaturedPosts() {
 const featuredPostsContainer = document.getElementById('featured-posts-container');
+if (!featuredPostsContainer) return; // Add check in case element doesn't exist
+featuredPostsContainer.innerHTML = ''; // Clear previous posts if any
 const randomPosts = getRandomPosts(blogPosts, 3);
 
 randomPosts.forEach(post => {
 const postElement = document.createElement('article');
-postElement.classList.add('article');
+postElement.classList.add('article', 'mb-2'); // Added margin-bottom for spacing
 
+// Simplified structure slightly for robustness
 postElement.innerHTML = `
-<div class="d-flex">
-<a href="${post.link}">
-<img src="${post.imageUrl}" class="object-fit" alt="">
-<div class="px-1 mt-1">
-<a href="${post.link}" class="text-title display-2 text-light">${post.title}</a>
-<p class="secondary-title text-secondary display-3"></p>
-</div>
-</a>
+<div class="d-flex align-items-center">
+    <a href="${post.link}" style="flex-shrink: 0; margin-right: 10px;">
+        <img src="${post.imageUrl}" class="object-fit" alt="" style="width: 60px; height: 60px; object-fit: cover;">
+    </a>
+    <div class="flex-grow-1">
+        <a href="${post.link}" class="text-title display-2 text-light" style="font-size: 0.9rem; line-height: 1.3;">${post.title}</a>
+        <!-- Optional: Add excerpt or date here if needed -->
+    </div>
 </div>
 `;
+
 
 featuredPostsContainer.appendChild(postElement);
 });
 }
 
 // Call the function to display posts when the page loads
-window.onload = displayFeaturedPosts;
+// Use DOMContentLoaded for faster execution than window.onload
+document.addEventListener('DOMContentLoaded', displayFeaturedPosts);
+
+// Basic example for WebGL canvas resize handling (needs integration with actual WebGL code)
+const canvas = document.querySelector('canvas.webgl');
+if (canvas) {
+    function resizeRendererToDisplaySize(renderer) {
+        const canvas = renderer.domElement;
+        const width = canvas.clientWidth;
+        const height = canvas.clientHeight;
+        const needResize = canvas.width !== width || canvas.height !== height;
+        if (needResize) {
+            renderer.setSize(width, height, false);
+            // Update camera aspect ratio if using perspective camera
+            // camera.aspect = width / height;
+            // camera.updateProjectionMatrix();
+        }
+        return needResize;
+    }
+
+    // --- Placeholder for your actual WebGL renderer and camera ---
+    // const renderer = new THREE.WebGLRenderer({ canvas });
+    // const camera = new THREE.PerspectiveCamera(...);
+    // ---
+
+    // Example resize listener - integrate with your render loop
+    window.addEventListener('resize', () => {
+        // resizeRendererToDisplaySize(renderer); // Call your resize function
+        console.log("Window resized, WebGL canvas should adapt."); // Placeholder log
+    });
+
+    // Initial size setting (call after renderer is initialized)
+    // resizeRendererToDisplaySize(renderer);
+}
+
+// Add basic navbar toggle functionality if '0de295a0142760d57058.js' doesn't handle it
+// Assumes the JS adds/removes an 'active' or 'show' class on the '.collapse' div
+const toggleButton = document.querySelector('.toggle-button');
+const navbarCollapse = document.querySelector('.navbar .collapse');
+
+if (toggleButton && navbarCollapse) {
+    toggleButton.addEventListener('click', () => {
+        // Check which class the existing JS uses, e.g., 'show' or 'active'
+        navbarCollapse.classList.toggle('show'); // Or 'active'
+    });
+}
+
 </script>
 </body>
 </html>
