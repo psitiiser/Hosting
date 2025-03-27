@@ -17,13 +17,13 @@
 src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js">
 </script>
 
-<!-- Added CSS for Mobile Responsiveness -->
+<!-- Added CSS for Mobile Responsiveness (Navbar changes removed, padding adjusted) -->
 <style>
     /* --- General Mobile Optimizations --- */
 
     /* Ensure images within the article body scale correctly */
     .article-text__body img {
-        max-width: auto; /* Never wider than the container */
+        max-width: 80%; /* Never wider than the container */
         height: auto;    /* Maintain aspect ratio */
         display: block;  /* Remove extra space below image */
         margin: 1em auto; /* Center image and add some vertical space */
@@ -40,11 +40,6 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.
         outline: none;
     }
 
-    /* Adjust overall padding for smaller screens */
-    .padding1 {
-        padding: 0.1rem; /* Reduce padding from potential larger default */
-    }
-
     /* Improve readability on small screens */
     .article-text__body p {
         line-height: 1.6; /* Increase line spacing slightly */
@@ -56,89 +51,25 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.
          line-height: 1.2;
     }
 
-
-    /* --- Responsive Navigation (Assuming standard toggle mechanism) --- */
-    @media (max-width: 992px) { /* Adjust breakpoint as needed based on main.css */
-        .navbar .toggle-button {
-            display: block; /* Show hamburger icon */
-            font-size: 1.5rem; /* Ensure it's tappable */
-            background: none;
-            border: none;
-            color: white; /* Adjust color if needed */
-            cursor: pointer;
+    /* Adjust padding for smaller screens */
+    @media (max-width: 768px) { /* Target mobile devices */
+        .padding1 {
+            /* Reduce horizontal padding, keep some vertical */
+            padding: 1rem 0.6rem; /* e.g., 1rem top/bottom, 0.6rem left/right */
         }
 
-        .navbar .collapse {
-            /* Styles for when the menu is collapsed */
-            display: none; /* Hide the menu by default */
-            position: absolute; /* Position it relative to the navbar */
-            top: 100%;      /* Place it below the header */
-            left: 0;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Dark background for overlay */
-            z-index: 1000; /* Ensure it's above other content */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        }
-
-        /* Assuming JS adds a class like 'active' or 'show' to display the menu */
-        .navbar .collapse.active,
-        .navbar .collapse.show {
-            display: block;
-        }
-
-        .navbar .navbar-nav {
-            flex-direction: column; /* Stack links vertically */
-            width: 100%;
-            align-items: flex-start; /* Align text to the left */
-        }
-
-        .navbar .nav-link {
-            padding: 12px 20px; /* Increase padding for easier tapping */
-            width: 100%;       /* Make link take full width */
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
-        }
-         .navbar .nav-link:last-child {
-            border-bottom: none;
+         /* Optionally adjust header padding if it's within padding1 */
+         #header .container.navbar {
+             /* Adjust if navbar container needs specific padding */
+             padding-left: 0.6rem;
+             padding-right: 0.6rem;
          }
-
-        /* Adjust header padding if needed */
-        #header .container.navbar {
-             padding-left: 1rem;
-             padding-right: 1rem;
-             justify-content: space-between; /* Push logo and button apart */
-        }
-
-        /* Adjust logo size if needed */
-        #header img {
-            max-width: 150px; /* Reduce logo size slightly */
-            height: auto;
-        }
+          /* Reduce logo size slightly on mobile if needed */
+         #header img {
+             max-width: 150px;
+             height: auto;
+         }
     }
-
-     /* Hide toggle button on larger screens */
-     @media (min-width: 993px) { /* Must match the max-width above + 1 */
-        .navbar .toggle-button {
-            display: none;
-        }
-        /* Ensure desktop styles apply correctly */
-        .navbar .collapse {
-            display: block !important; /* Override any potential display:none */
-            position: static;
-            background-color: transparent;
-            box-shadow: none;
-            width: auto;
-         }
-         .navbar .navbar-nav {
-            flex-direction: row;
-            width: auto;
-         }
-          .navbar .nav-link {
-            padding: 8px 15px; /* Restore desktop padding */
-            width: auto;
-            border-bottom: none;
-          }
-     }
 
 
     /* --- Responsive Footer --- */
@@ -169,16 +100,16 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.
 
 </head>
 <body>
+<!-- The main container div might influence overall padding -->
 <div class="container">
+<!-- This div likely controls the main content padding -->
 <div class="padding1">
-<!-- Removed position: fixed and potentially conflicting styles if they existed -->
+<!-- Original Header Structure -->
 <header id="header" class="shadow bg-transparent">
-    <!-- Added container class here if not already present in main.css for alignment -->
     <nav class="container navbar">
-        <!-- Ensure logo scales well -->
-        <img src="../Images/psit_sqr_white.png" alt="PSIT Logo" style="max-width: 180px; height: auto;"> <!-- Inline style for quick demo, better in CSS -->
-        <button class="toggle-button" aria-label="Toggle navigation"><span><i class="fas fa-bars"></i></span></button>
-        <!-- The 'collapse' div that gets toggled -->
+        <!-- Logo - adjusted max-width via CSS above for mobile -->
+        <img src="../Images/psit_sqr_white.png" width="200" height="200" alt="PSIT Logo">
+        <button class="toggle-button" aria-label="Toggle Navigation"><span><i class="fas fa-bars"></i></span></button>
         <div class="collapse">
             <ul class="navbar-nav">
                 <a href="../index.html" class="nav-link">Home</a>
@@ -191,10 +122,11 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.
     </nav>
 </header>
 </div>
-<!-- Assuming this script handles the navbar toggle -->
+<!-- This script presumably handles the original navbar toggle logic -->
 <script src="0de295a0142760d57058.js"></script>
 
 <main id="site-main">
+<!-- Apply padding reduction via .padding1 or directly here if needed -->
 <section class="article-text">
 <header class="article-text__intro">
 <h2 class="article-title">How Did Quantum Mechanics Revolutionize Our Understanding of Reality?</h2>
@@ -212,7 +144,7 @@ While Planck opened the door to the quantum world, it was Albert Einstein who bl
 
 The quantum revolution gained further momentum in 1911 at the first Solvay Congress, a gathering of some of the most brilliant scientific minds of the day. The meeting was dominated by discussions of radiation theory and the nature of quanta, with Einstein once again playing a central role. At the time, quantum theory was still in its infancy, with many questions left unanswered. One of the central challenges at that time was how to reconcile the continuous nature of classical electromagnetic waves with the emerging evidence for quantized energy levels. This debate laid the foundation for a new way of thinking about the physical world, one that would culminulate in the development of quantum mechanics in the 1920s.<br><br>
 
-<!-- Removed fixed width and height attributes -->
+<!-- Image is now responsive via CSS -->
 <img src="https://3.bp.blogspot.com/-S7Z6WVrbSjg/VIvk5Xv6OEI/AAAAAAAAJ18/RCxg43obsYc/s1600/The+Solvay+Conference,+probably+the+most+intelligent+picture+ever+taken,+1927+(2).jpg" alt="The 1927 Solvay Conference. 17 of the 29 attendees were—or became—Nobel laureates later."><br>
 <i>The 1927 Solvay Conference. 17 of the 29 of the attendees were—or became—Nobel laureates later.</i><br><br>
 
@@ -237,6 +169,7 @@ And yet, as much as quantum mechanics continued to evolve after that, it raised 
 </section>
 
 <footer id="footer">
+<!-- Padding adjusted via .padding1 CSS rule -->
 <div class="padding1">
 <!-- Assuming 'row' uses flexbox -->
 <div class="row mb-3">
@@ -363,17 +296,7 @@ if (canvas) {
     // resizeRendererToDisplaySize(renderer);
 }
 
-// Add basic navbar toggle functionality if '0de295a0142760d57058.js' doesn't handle it
-// Assumes the JS adds/removes an 'active' or 'show' class on the '.collapse' div
-const toggleButton = document.querySelector('.toggle-button');
-const navbarCollapse = document.querySelector('.navbar .collapse');
-
-if (toggleButton && navbarCollapse) {
-    toggleButton.addEventListener('click', () => {
-        // Check which class the existing JS uses, e.g., 'show' or 'active'
-        navbarCollapse.classList.toggle('show'); // Or 'active'
-    });
-}
+// Navbar toggle JS removed as requested. Assuming 0de...js handles it.
 
 </script>
 </body>
