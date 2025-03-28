@@ -152,7 +152,40 @@ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.
              padding-right: 20px;
          }
     }
+    .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 15px; /* Consistent spacing between icons */
+}
 
+.navbar-nav li {
+    margin: 0; /* Remove individual margins to rely on gap */
+}
+
+.nav-link {
+    color: #fff; /* Adjust color as needed */
+    text-decoration: none;
+    font-size: 1.2rem; /* Adjust icon size */
+    transition: color 0.3s ease; /* Optional hover effect */
+}
+
+.nav-link:hover {
+    color: #ccc; /* Optional hover color */
+}
+
+.social-icons {
+    text-align: left; /* Align icons with email text above */
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .navbar-nav {
+        justify-content: center; /* Center icons on smaller screens */
+    }
+}
 </style>
 
 </head>
