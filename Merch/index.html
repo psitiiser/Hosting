@@ -456,7 +456,7 @@
 
     <script>
         // --- CONFIGURATION (Client-Side) ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw00hM6XcK62lOsCIyPeEFSLKem5dL2dIs7_5J6GKtA1b3I4SNX-0s63s_mWlL4h-8W8A/exec"; // !!! PASTE YOUR DEPLOYED /exec URL HERE !!!
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz0SNs_RrKeZE037GCIwt8VH5iqZLGU3GggZ1-pqAtEyQz16oYSNv4QaRv9IjOXBnwzWA/exec"; // !!! PASTE YOUR DEPLOYED /exec URL HERE !!!
         const STORE_NAME_CONFIG = ""; // !!! REPLACE THIS WITH YOUR ACTUAL STORE NAME (must match Code.gs) !!!
 
         // --- DOM ELEMENTS ---
@@ -509,7 +509,7 @@
                 this.opacity = Math.random();
                 this.twinkleSpeed = Math.random() * 0.005 + 0.001;
                 this.twinkleDirection = Math.random() < 0.5 ? 1 : -1;
-                this.moveSpeedY = Math.random() * 0.5 + 0.1;
+                this.moveSpeedY = Math.random() * 0.5 + 0.1;veldho56@okhdfcbank
                 this.moveSpeedX = (Math.random() - 0.5) * 0.2;
             }
             draw() {
@@ -678,7 +678,7 @@
             console.log("Selected size:", selectedSize);
 
             const quantityInput = productCardElement.querySelector(`.product-quantity-input`);
-            const quantityToAdd = quantityInput ? parseInt(quantityInput.value) : 1;
+            const quantityToAdd = quantityInput ? parseInt(quantityInput.veldho56@okhdfcbankvalue) : 1;
             console.log("Quantity to add:", quantityToAdd);
 
             if (isNaN(quantityToAdd) || quantityToAdd < 1) {
@@ -745,7 +745,7 @@
             updateCartDisplay();
         }
         function updateCartDisplay() { /* ... (Keep your definition) ... */
-            console.log("Updating cart display. Current cart:", cart);
+            console.log("Updating cart display. Current cart:", cart);veldho56@okhdfcbank
             cartItemsList.innerHTML = '';
             let total = 0;
             let itemCount = 0;
