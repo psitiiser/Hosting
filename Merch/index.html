@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title will be set by JavaScript -->
-    <title>Loading Store...</title>
+    <title>PSIT Merchandise</title>
+    <!-- FontAwesome for the Header Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-bg: #000000; /* Pure Black */
             --secondary-bg: #0d0d0d; /* Very dark grey for cards/sections */
             --tertiary-bg: #1a1a1a; /* Even lighter for accents/inputs */
-            --primary-text: #00ff00; /* Pure Neon Green Text */
+            --primary-text: #00ff00; /* Pure Neon Green Text (Store Content) */
             --secondary-text: #00cc00; /* Slightly dimmer Neon Green */
             --accent-color: #00ff00; /* Neon Green Accent */
             --accent-hover: #33ff33; /* Brighter Neon Green on hover */
             --green-accent: #00ff00; /* Ensure prices are Neon Green */
             --border-color: #004400; /* Dark Green Border */
             --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            --font-logo: 'Orbitron', sans-serif; /* Already present, good for sci-fi */
+            --font-logo: 'Orbitron', sans-serif;
+            
+            /* Header Specific Colors (Neutral/White) */
+            --header-text: #ffffff;
+            --header-bg: rgba(13, 13, 13, 0.95);
+            --header-border: rgba(255, 255, 255, 0.1);
         }
 
         /* Astronomy Background Canvas */
@@ -27,8 +35,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Ensure it stays behind content */
-            pointer-events: none; /* Allow clicks to pass through */
+            z-index: -1;
+            pointer-events: none;
         }
 
         body {
@@ -38,35 +46,110 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scrollbar from canvas or other elements */
+            overflow-x: hidden;
         }
+
+        /* --- HEADER STYLES (Neutral/White) --- */
+        header {
+            background-color: var(--header-bg);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--header-border); /* Changed from green to subtle white */
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Logo styling */
+        .navbar img {
+            height: 60px;
+            width: auto;
+        }
+        
+        .logo-fallback {
+            font-family: var(--font-logo);
+            font-size: 1.5em;
+            color: var(--header-text); /* White */
+            text-decoration: none;
+        }
+
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: var(--header-text); /* White */
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            text-transform: uppercase;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #cccccc; /* Light Grey on hover */
+            opacity: 0.8;
+            text-shadow: none; /* No neon glow */
+        }
+
+        .toggle-button {
+            display: none; /* Hidden on desktop */
+            background: none;
+            border: 1px solid var(--header-text); /* White border */
+            color: var(--header-text); /* White icon */
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        /* Mobile Header Responsive */
+        @media (max-width: 768px) {
+            .toggle-button {
+                display: block;
+            }
+
+            .navbar-nav {
+                display: none; /* Hidden by default on mobile */
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                background-color: var(--secondary-bg);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                border-bottom: 1px solid var(--header-border);
+                padding: 15px 0;
+            }
+
+            .navbar-nav.active {
+                display: flex;
+            }
+        }
+        /* --- END HEADER STYLES --- */
+
 
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            position: relative; /* Ensure content is above the canvas */
+            position: relative;
             z-index: 1;
-        }
-
-        header {
-            background-color: var(--secondary-bg);
-            padding: 15px 0;
-            text-align: center;
-            border-bottom: 2px solid var(--border-color);
-            margin-bottom: 30px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            color: var(--accent-color);
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        .logo-text {
-            font-family: var(--font-logo);
         }
 
         #products-grid {
@@ -158,7 +241,7 @@
             font-size: 0.9em;
             color: var(--secondary-text);
             margin-bottom: 10px;
-            min-height: 40px; /* Adjust as needed for your descriptions */
+            min-height: 40px; 
         }
         .product-card .price {
             font-size: 1.5em;
@@ -350,7 +433,7 @@
             max-width: 200px;
             border: 2px solid var(--primary-text);
             border-radius: 5px;
-            background-color: white; /* Keep QR code on white background for scannability */
+            background-color: white; 
             padding: 5px;
         }
 
@@ -377,7 +460,6 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <canvas id="space-background"></canvas>
@@ -387,8 +469,27 @@
         <span>Initiating Cosmic Link...</span>
     </div>
 
-    <header>
-        <h1 class="logo-text">Loading Store...</h1>
+    <!-- HEADER (Neutral/White Colors) -->
+    <header id="header" class="shadow bg-transparent">
+       <nav class="container navbar">
+          <!-- Fallback logic for image added in case folder structure doesn't match -->
+          <a href="../index.html" class="logo-fallback">
+              <img src="../Images/psit_sqr_white.png" alt="PSIT Logo" onerror="this.style.display='none'; this.parentElement.innerText=STORE_NAME_CONFIG;">
+          </a>
+          
+          <button class="toggle-button"><span><i class="fas fa-bars"></i></span></button>
+          
+          <div class="collapse" id="navbar-collapse">
+             <ul class="navbar-nav">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../Team Page/index_team.html" class="nav-link">Meet The Team</a>
+                <a href="../Blog Page/index_blog.html" class="nav-link">Blog</a>
+                <a href="../Events Page/index_events.html" class="nav-link">Events</a>
+                <a href="../Resources/index_resources.html" class="nav-link">Resources</a>
+                <a href="../Merch/in.html" class="nav-link" style="font-weight: bold;">Merchandise</a>
+             </ul>
+          </div>
+       </nav>
     </header>
 
     <div class="container">
@@ -456,8 +557,8 @@
 
     <script>
         // --- CONFIGURATION (Client-Side) ---
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw00hM6XcK62lOsCIyPeEFSLKem5dL2dIs7_5J6GKtA1b3I4SNX-0s63s_mWlL4h-8W8A/exec"; // !!! PASTE YOUR DEPLOYED /exec URL HERE !!!
-        const STORE_NAME_CONFIG = ""; // !!! REPLACE THIS WITH YOUR ACTUAL STORE NAME (must match Code.gs) !!!
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw00hM6XcK62lOsCIyPeEFSLKem5dL2dIs7_5J6GKtA1b3I4SNX-0s63s_mWlL4h-8W8A/exec";
+        const STORE_NAME_CONFIG = "PSIT Merch"; 
 
         // --- DOM ELEMENTS ---
         const productsGrid = document.getElementById('products-grid');
@@ -478,17 +579,25 @@
         const confirmationModal = document.getElementById('confirmationModal');
         const closeConfirmationModal = document.getElementById('closeConfirmationModal');
         const orderConfirmationMessage = document.getElementById('order-confirmation-message');
-        const upiPaymentLinkElem = document.getElementById('upi-payment-link'); // Renamed for clarity
+        const upiPaymentLinkElem = document.getElementById('upi-payment-link');
         const closeConfirmationAndShopBtn = document.getElementById('closeConfirmationAndShopBtn');
         const loader = document.getElementById('loader');
-        const headerLogoText = document.querySelector('header h1.logo-text');
+        
+        // --- HEADER LOGIC ---
+        const toggleButton = document.querySelector('.toggle-button');
+        const navbarNav = document.querySelector('.navbar-nav');
+        
+        if (toggleButton) {
+            toggleButton.addEventListener('click', () => {
+                navbarNav.classList.toggle('active');
+            });
+        }
 
         // --- APP STATE ---
         let productsData = [];
-        let cart = {}; // Format: { "P001_M": {id, name, price, quantity, size, imageUrl}, ... }
+        let cart = {};
 
         // --- BACKGROUND ANIMATION ---
-        // (Your existing star animation code is fine, no changes needed here)
         const canvas = document.getElementById('space-background');
         const ctx = canvas.getContext('2d');
         let stars = [];
@@ -501,7 +610,7 @@
             canvas.height = window.innerHeight;
             initializeStars();
         }
-        class Star { /* ... (Keep your Star class definition) ... */
+        class Star { 
             constructor() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
@@ -509,7 +618,7 @@
                 this.opacity = Math.random();
                 this.twinkleSpeed = Math.random() * 0.005 + 0.001;
                 this.twinkleDirection = Math.random() < 0.5 ? 1 : -1;
-                this.moveSpeedY = Math.random() * 0.5 + 0.1;veldho56@okhdfcbank
+                this.moveSpeedY = Math.random() * 0.5 + 0.1;
                 this.moveSpeedX = (Math.random() - 0.5) * 0.2;
             }
             draw() {
@@ -557,8 +666,7 @@
 
 
         // --- IMAGE SLIDER ---
-        // (Your existing initializeSlider function is fine, no changes needed)
-        function initializeSlider(sliderContainer) { /* ... (Keep your initializeSlider definition) ... */
+        function initializeSlider(sliderContainer) {
             const slider = sliderContainer.querySelector('.product-image-slider');
             const images = slider.querySelectorAll('img');
             if (images.length <= 1) {
@@ -567,7 +675,7 @@
             }
             let currentIndex = 0;
             const dotsContainer = sliderContainer.querySelector('.slider-nav');
-            dotsContainer.innerHTML = ''; // Clear previous dots if any
+            dotsContainer.innerHTML = ''; 
             images.forEach((img, index) => {
                 const dot = document.createElement('span');
                 dot.classList.add('slider-dot');
@@ -578,8 +686,8 @@
             const dots = dotsContainer.querySelectorAll('.slider-dot');
             function goToSlide(index) {
                 slider.style.transform = `translateX(-${index * 100}%)`;
-                if (dots[currentIndex]) dots[currentIndex].classList.remove('active'); // Check if current dot exists
-                if (dots[index]) dots[index].classList.add('active'); // Check if new dot exists
+                if (dots[currentIndex]) dots[currentIndex].classList.remove('active'); 
+                if (dots[index]) dots[index].classList.add('active'); 
                 currentIndex = index;
             }
             const nextArrow = sliderContainer.querySelector('.slider-arrow.next');
@@ -590,7 +698,6 @@
 
 
         // --- PRODUCT DISPLAY ---
-        // (Your existing renderProducts function is mostly fine, minor adjustments for error checking)
         function renderProducts(productsResponse) {
             console.log("Received products for rendering:", productsResponse);
             if (productsResponse.error) {
@@ -598,7 +705,7 @@
                 loader.style.display = 'none';
                 return;
             }
-            productsData = productsResponse; // Store globally (assuming productsResponse is the array itself)
+            productsData = productsResponse; 
             productsGrid.innerHTML = '';
 
             if (!productsData || productsData.length === 0) {
@@ -652,19 +759,17 @@
         }
 
         // --- CART LOGIC ---
-        // (Your existing cart functions: getCartItemId, addToCart, showToast, updateCartQuantity, removeFromCart, updateCartDisplay, updateCheckoutSummary are fine, no changes needed)
-        function getCartItemId(productId, size) { /* ... (Keep your definition) ... */ return `${productId}_${size}`; }
-        function addToCart(productId) { /* ... (Keep your definition) ... */
+        function getCartItemId(productId, size) { return `${productId}_${size}`; }
+        
+        function addToCart(productId) { 
             console.log("Attempting to add to cart. Product ID:", productId);
-            console.log("Current productsData:", productsData);
-
+            
             const product = productsData.find(p => p.id === productId);
             if (!product) {
                 console.error("Product not found in productsData with ID:", productId);
                 alert("Error: Product details not found. Please try again.");
                 return;
             }
-            console.log("Found product:", product);
 
             const productCardElement = document.querySelector(`.product-card[data-product-id="${productId}"]`);
             if (!productCardElement) {
@@ -675,24 +780,21 @@
 
             const sizeSelect = productCardElement.querySelector(`.product-size-select`);
             const selectedSize = sizeSelect ? sizeSelect.value : 'N/A';
-            console.log("Selected size:", selectedSize);
-
+            
             const quantityInput = productCardElement.querySelector(`.product-quantity-input`);
-            const quantityToAdd = quantityInput ? parseInt(quantityInput.veldho56@okhdfcbankvalue) : 1;
-            console.log("Quantity to add:", quantityToAdd);
-
+            
+            const quantityToAdd = quantityInput ? parseInt(quantityInput.value) : 1;
+            
             if (isNaN(quantityToAdd) || quantityToAdd < 1) {
                 alert("Please enter a valid quantity (1 or more).");
-                if(quantityInput) quantityInput.value = 1; // Reset invalid input
+                if(quantityInput) quantityInput.value = 1; 
                 return;
             }
 
             const cartItemId = getCartItemId(product.id, selectedSize);
-            console.log("Cart Item ID:", cartItemId);
 
             if (cart[cartItemId]) {
                 cart[cartItemId].quantity += quantityToAdd;
-                console.log("Existing item, updated quantity:", cart[cartItemId].quantity);
             } else {
                 cart[cartItemId] = {
                     id: product.id,
@@ -702,14 +804,14 @@
                     size: selectedSize,
                     imageUrl: (product.imageUrls && product.imageUrls.length > 0) ? product.imageUrls[0] : 'https://via.placeholder.com/50'
                 };
-                console.log("New item added to cart:", cart[cartItemId]);
             }
 
             updateCartDisplay();
             showToast(`${quantityToAdd} x ${product.name} (${selectedSize}) added to cart!`);
-            if(quantityInput) quantityInput.value = 1; // Reset quantity input on card
+            if(quantityInput) quantityInput.value = 1; 
         }
-        function showToast(message) { /* ... (Keep your definition) ... */
+
+        function showToast(message) { 
             const toast = document.createElement('div');
             toast.textContent = message;
             Object.assign(toast.style, {
@@ -724,28 +826,27 @@
                 setTimeout(() => toast.remove(), 300);
             }, 2700);
         }
-        function updateCartQuantity(cartItemId, change) { /* ... (Keep your definition) ... */
-            console.log("Updating quantity for cartItemId:", cartItemId, "Change:", change);
+
+        function updateCartQuantity(cartItemId, change) { 
             if (cart[cartItemId]) {
                 cart[cartItemId].quantity += change;
                 if (cart[cartItemId].quantity <= 0) {
                     delete cart[cartItemId];
-                    console.log("Item removed due to quantity <= 0");
-                } else {
-                    console.log("New quantity:", cart[cartItemId].quantity);
-                }
+                } 
             }
             updateCartDisplay();
         }
-        function removeFromCart(cartItemId) { /* ... (Keep your definition) ... */
-            console.log("Removing cartItemId:", cartItemId);
+
+        function removeFromCart(cartItemId) { 
             if (cart[cartItemId]) {
                 delete cart[cartItemId];
             }
             updateCartDisplay();
         }
-        function updateCartDisplay() { /* ... (Keep your definition) ... */
-            console.log("Updating cart display. Current cart:", cart);veldho56@okhdfcbank
+
+        function updateCartDisplay() { 
+            console.log("Updating cart display. Current cart:", cart);
+            
             cartItemsList.innerHTML = '';
             let total = 0;
             let itemCount = 0;
@@ -785,9 +886,9 @@
             if (checkoutModal.style.display === 'block') {
                 updateCheckoutSummary(Object.values(cart), total);
             }
-            console.log("Cart display updated. Total items:", itemCount, "Total price:", total.toFixed(2));
         }
-        function updateCheckoutSummary(cartItemsArray, total) { /* ... (Keep your definition) ... */
+
+        function updateCheckoutSummary(cartItemsArray, total) { 
             checkoutItemsSummaryList.innerHTML = '';
             if(cartItemsArray.length === 0) {
                  checkoutItemsSummaryList.innerHTML = '<li>Your cart is empty.</li>';
@@ -805,7 +906,6 @@
 
 
         // --- MODAL HANDLING ---
-        // (Your existing modal handling is fine, no changes needed)
         cartIcon.onclick = () => { updateCartDisplay(); cartModal.style.display = 'block'; }
         closeCartModal.onclick = () => { cartModal.style.display = 'none'; }
         checkoutBtn.onclick = () => {
@@ -825,7 +925,7 @@
         }
 
 
-        // --- CHECKOUT AND ORDER SUBMISSION (Modified for fetch API) ---
+        // --- CHECKOUT AND ORDER SUBMISSION ---
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
             placeOrderBtn.disabled = true;
@@ -843,21 +943,18 @@
 
             fetch(SCRIPT_URL, {
                 method: 'POST',
-                // mode: 'no-cors', // Usually not needed for Apps Script if doPost returns ContentService
                 headers: {
-                    // 'Content-Type': 'application/json', // Apps Script's e.postData.contents is usually plain text
-                    'Content-Type': 'text/plain', // More robust for Apps Script `e.postData.contents`
+                    'Content-Type': 'text/plain', 
                 },
                 body: JSON.stringify({ action: "processOrder", payload: orderPayload })
             })
             .then(response => {
                 if (!response.ok) {
-                    // If server responds with an error status (4xx, 5xx)
                     return response.text().then(text => { throw new Error(`Server error: ${response.status} ${response.statusText} - ${text}`) });
                 }
                 return response.json();
             })
-            .then(data => { // This is the 'response' object from your Apps Script 'processOrder'
+            .then(data => { 
                 handleOrderSuccess(data);
             })
             .catch(error => {
@@ -865,7 +962,7 @@
             });
         });
 
-        function handleOrderSuccess(response) { // response is the JSON from Apps Script
+        function handleOrderSuccess(response) { 
             console.log("Order success response received from fetch:", response);
 
             loader.style.display = 'none';
@@ -874,16 +971,15 @@
 
             if (response.success) {
                 checkoutModal.style.display = 'none';
-                cart = {}; // Clear cart
+                cart = {}; 
                 updateCartDisplay();
                 checkoutForm.reset();
 
-                // Data from Apps Script response
                 const upiId = response.upiId;
                 const customerName = response.customerName || 'Customer';
                 const orderId = response.orderId;
                 const totalPrice = parseFloat(response.totalPrice);
-                const responseStoreName = response.storeName || STORE_NAME_CONFIG; // Use response's store name
+                const responseStoreName = response.storeName || STORE_NAME_CONFIG; 
 
                 if (!upiId || isNaN(totalPrice) || !orderId) {
                     console.error("Missing critical data for QR code/payment link generation:", { upiId, totalPrice, orderId });
@@ -920,7 +1016,6 @@
                 }
 
                 confirmationModal.style.display = 'block';
-                 // Ensure QR code img is in DOM before trying to log its src
                 setTimeout(() => {
                     const qrImg = document.getElementById('upi-qr-code');
                     if (qrImg) console.log("QR Code Image src:", qrImg.src);
@@ -941,15 +1036,9 @@
             alert(`Error placing order: ${error.message || 'An unknown error occurred'}. Please check console for details and try again.`);
         }
 
-        // --- INITIAL LOAD (Modified for fetch API) ---
+        // --- INITIAL LOAD ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Set Store Name in UI
             document.title = STORE_NAME_CONFIG;
-            if (headerLogoText) {
-                headerLogoText.textContent = STORE_NAME_CONFIG;
-            } else {
-                console.warn("Header logo text element not found.");
-            }
 
             if (!SCRIPT_URL || SCRIPT_URL === "YOUR_APPS_SCRIPT_WEB_APP_EXEC_URL_HERE") {
                 alert("CRITICAL ERROR: SCRIPT_URL is not configured in the HTML. Please edit index.html and set the SCRIPT_URL variable.");
@@ -969,12 +1058,11 @@
             fetch(`${SCRIPT_URL}?action=getProducts`)
                 .then(response => {
                     if (!response.ok) {
-                        // If server responds with an error status (4xx, 5xx)
                         return response.text().then(text => { throw new Error(`Server error: ${response.status} ${response.statusText} - ${text}`) });
                     }
                     return response.json();
                 })
-                .then(data => { // data is the response from Apps Script's getProducts
+                .then(data => { 
                     renderProducts(data);
                 })
                 .catch(err => {
