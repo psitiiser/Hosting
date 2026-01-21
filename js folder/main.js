@@ -1,11 +1,13 @@
-let toggle = document.querySelector("#header .toggle-button");
-let collapse = document.querySelectorAll("#header .collapse")
+const toggle = document.querySelector("#header .toggle-button");
+const collapse = document.querySelector("#header .collapse");
 
-toggle.addEventListener('click', function(){
-    collapse.forEach(col=>col.classList.toggle("collapse-toggle"))
-})
+toggle.addEventListener("click", () => {
+    collapse.classList.toggle("active");
+});
+
 
 // Modal
 $('#myModal').on('shown.bs.modal', function () {
   $('#myInput').trigger('focus')
 })
+
