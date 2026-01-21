@@ -363,8 +363,8 @@ nav a:focus {
 
 .about-us {
 
+    padding: 0;
     text-align: center;
-    padding: 15vh 2vh 1em 1em;
 }
 
 .events-showcase {
@@ -377,92 +377,72 @@ nav a:focus {
     text-align: center;
     padding: 20px;
 }
-
 /* blog section */
 
 .blogs-showcase {
     padding: 2vh 1em;
 }
 
-.blog-container{
+.blog-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin: 20px 0px;
     flex-wrap: wrap;
+    gap: 20px; /* Adjust spacing between members */
 }
 
-.blog-box{
-    width: 350px;
+.blog-box {
+    /* Using flex-basis to fit ~5 members per row on desktop */
+    flex: 0 1 200px; 
     background-color: transparent;
-    border: 1px solid var(--clr-accent-3);
-    margin: 20px;
+    border: none; /* Removed the square border */
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.blog-box .btn{
-    margin: 0px 50px;
+.blog-img {
+    /* Set fixed, equal dimensions for a perfect circle */
+    width: 160px; 
+    height: 160px; 
+    overflow: hidden;
+    border-radius: 50%; 
+    margin-bottom: 15px;
+    /* Ensure the container stays a square */
+    aspect-ratio: 1 / 1; 
 }
 
-.blog-img{
-    width: 100%;
-    height: auto;
-}
-
-.blog-img img{
+.blog-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Crops the photo to fill the circle without stretching */
     object-position: center;
 }
 
-.blog-text{
-    padding: 30px;
+.blog-text {
+    padding: 0;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
-.event-text{
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-
-}
-.blog-text span{
+.blog-text span {
     color: var(--clr-accent-3);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
 }
 
-.blog-text .blog-title{
-    font-size: 1.3rem;
-    font-weight: 500;
+.blog-text p {
+    font-size: 0.85rem;
     color: var(--clr-text);
+    margin: 1px 0;
+    line-height: 1.3;
+    /* Removed line-clamp to ensure all text shows */
+    display: block; 
 }
-
-.blog-text .blog-title:hover{
-    color: var(--clr-accent-1);
-    transition: all ease 0.3s;
-}
-
-.blog-text p{
-    font-size: 00.9rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 20px 0px;
-}
-
-.blog-text a{
-    color: var(--clr-text);
-}
-
-.blog-text a:hover{
-    color: var(--clr-accent-1);
-    transition: all ease 0.3s;
-}
-
-
 /* footer */
 
 #footer{
