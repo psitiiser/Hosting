@@ -196,64 +196,95 @@ p {
     margin: auto;
 }
 /* Navigation */
-
 header {
-    padding: 0em 0 0em;
-    background-color: transparent;
+    background-color: var(--header-bg);
+    padding: 10px 0;
+    border-bottom: 1px solid var(--header-border); /* Changed from green to subtle white */
+    margin-bottom: 30px;
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.navbar{
-    position: relative;
+.navbar {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.nav-brand{
-    font-weight: bold;
-    align-self: center;
-    font-size: 32px;
+/* Logo styling */
+.navbar img {
+    height: 120px;
+    width: 120px;
 }
 
-.collapse{
-    align-self: center;
+.logo-fallback {
+    font-family: var(--font-logo);
+    font-size: 1.5em;
+    color: var(--header-text); /* White */
+    text-decoration: none;
 }
 
-.nav-link{
-    font-size: 30px;
-    margin: 33px;
+.navbar-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
 }
 
-.insta-icon{
-    display: inline;
-    border-left: 1px solid var(--clr-text);
-    padding-left: 12px;
-    margin-left: 10px;
+.nav-link {
+    color: var(--header-text); /* White */
+    text-decoration: none;
+    text-transform: uppercase;
+    transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
 }
 
-.toggle-button{
-    font-size: 21px;
-    background-color: transparent;
-    color: var(--clr-text);
-    border: none;
-    position: absolute;
-    right: 0;
-    margin: 8px 10px;
-    display: none;
+.nav-link:hover {
+    color: #cccccc; /* Light Grey on hover */
+    opacity: 0.8;
+    text-shadow: none; /* No neon glow */
 }
 
-.toggle-button:focus{
-    outline: none;
+.toggle-button {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: 1px solid var(--header-text); /* White border */
+    color: var(--header-text); /* White icon */
+    font-size: 1.2em;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 
-nav a {
-    color: #fff;
-}
+/* Mobile Header Responsive */
+@media (max-width: 768px) {
+    .toggle-button {
+        display: block;
+    }
 
-nav a:hover,
-nav a:focus {
-    color: var(--clr-accent-1);
+    .navbar-nav {
+        display: none; /* Hidden by default on mobile */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--secondary-bg);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border-bottom: 1px solid var(--header-border);
+        padding: 15px 0;
+    }
+
+    .navbar-nav.active {
+        display: flex;
+    }
 }
 /* Buttons */
 
@@ -381,6 +412,12 @@ nav a:focus {
 
 .blogs-showcase {
     padding: 2vh 1em;
+    margin-top: 0;
+}
+
+header.shadow{
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .blog-container {
@@ -395,7 +432,8 @@ nav a:focus {
 .blog-box {
     /* Using flex-basis to fit ~5 members per row on desktop */
     flex: 0 1 200px; 
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
     border: none; /* Removed the square border */
     margin: 10px;
     display: flex;

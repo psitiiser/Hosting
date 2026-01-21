@@ -257,7 +257,7 @@ header {
     color: var(--header-text); /* White */
     text-decoration: none;
     font-weight: 500;
-    font-size: 1em;
+    margin: 0 10px;
     text-transform: uppercase;
     transition:
         color 0.3s ease,
@@ -460,15 +460,17 @@ body {
 
 .blog-box {
     width: 350px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
     margin: 20px;
+    border-radius: 20px;
 }
 
 .blog-box2 {
     width: 350px;
     height: 500px;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.5);
     margin: 20px;
+    border-radius: 20px;
 }
 
 .blog-box .btn {
@@ -478,6 +480,7 @@ body {
 .blog-img {
     width: 100%;
     height: auto;
+    z-index:-99;
 }
 
 .blog-img img {
