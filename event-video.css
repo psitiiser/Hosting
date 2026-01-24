@@ -1,31 +1,27 @@
 .event-video-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
   margin: 3rem auto;
   width: 100%;
 }
 
-/* This is the size controller */
+/* VIDEO controls its own size */
 .event-video {
   width: 80%;
   max-width: 900px;
-  aspect-ratio: 16 / 9;   /* lock size HERE */
+
+  aspect-ratio: 16 / 9;   /* CRITICAL */
+  height: auto;
+
   border-radius: 14px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
   background: black;
-  overflow: hidden;      /* prevents overflow on play */
-}
 
-/* Video just fills the container */
-.video-player {
-  width: 100%;
-  height: 100%;
   object-fit: contain;
   display: block;
 }
 
-/* Mobile optimization */
+/* Mobile */
 @media (max-width: 768px) {
   .event-video {
     width: 95%;
