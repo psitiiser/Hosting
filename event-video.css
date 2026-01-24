@@ -13,6 +13,14 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
   background: black;
 }
+.video-player {
+  width: 100%;
+  max-width: 640px;      /* choose your preferred size */
+  aspect-ratio: 16 / 9; /* lock the shape */
+  object-fit: contain;  /* no resize on play */
+  display: block;
+}
+
 
 /* Mobile optimization */
 @media (max-width: 768px) {
