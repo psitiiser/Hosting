@@ -5,21 +5,15 @@
   width: 100%;
 }
 
-/* VIDEO controls its own size */
 .event-video {
   width: 80%;
   max-width: 900px;
-
-  aspect-ratio: 16 / 9;   /* CRITICAL */
+  aspect-ratio: 16 / 9;
   height: auto;
 
-  border-radius: 14px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
-  background: black;
-
-  object-fit: contain;
-  display: block;
+  contain: layout size;   /* ⭐ THIS locks layout */
 }
+
 
 /* Mobile */
 @media (max-width: 768px) {
