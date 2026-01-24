@@ -1,0 +1,22 @@
+.event-video-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem auto;
+  width: 100%;
+}
+
+.event-video {
+  width: 80%;
+  max-width: 900px;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+  background: black;
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .event-video {
+    width: 95%;
+  }
+}
