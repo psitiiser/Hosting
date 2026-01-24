@@ -14,7 +14,7 @@
   background: black;
 }
 .video-player {
-  width: 100%;
+  width: 80%;
   max-width: 640px;      /* choose your preferred size */
   aspect-ratio: 16 / 9; /* lock the shape */
   object-fit: contain;  /* no resize on play */
