@@ -10,3 +10,12 @@ if (video) {
     }
   });
 }
+<script>
+  window.addEventListener("load", () => {
+    const video = document.querySelector(".event-video");
+    if (video) {
+      video.play().catch(() => {});
+    }
+  });
+</script>
+
